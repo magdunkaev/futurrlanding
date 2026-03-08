@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Futurr Digital | Done-For-You B2B Outbound, LinkedIn & Paid Ads Systems</title>
+  <meta name="description" content="Done-for-you cold email, LinkedIn outbound, and paid ads (Meta & Google) systems that generate qualified B2B pipeline in as little as 14 days. No SDR hiring. No guesswork." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="shortcut icon" href="favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+
+  <style>
+    /* ─────────────────────────────────────────────────────────
+       RESET & TOKENS
+    ───────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #ffffff;
+      --surface:      #f8f8f8;
+      --surface2:     #f0f0f0;
+      --border:       #e5e5e5;
+      --border2:      #d0d0d0;
+      --accent:       #1C3D9C;          /* brand bluesolid fills, buttons */
+      --accent-text:  #1C3D9C;          /* brand bluetext on light bg */
+      --accent-glow:  rgba(28, 61, 156, 0.07);
+      --accent-edge:  rgba(28, 61, 156, 0.20);
+      --text:         #0d0d0d;
+      --muted:        #6b6b6b;
+      --dim:          #a0a0a0;
+      --red-dim:      rgba(220, 50, 50, 0.08);
+      --red-edge:     rgba(220, 50, 50, 0.18);
+      --r:            14px;
+      --r-lg:         22px;
+      --r-xl:         32px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ─────────────────────────────────────────────────────────
+       NAV
+    ───────────────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo img {
+      height: 32px;
+      width: auto;
+    }
+    .nav-logo-text {
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo-text em { font-style: normal; color: var(--accent-text); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 9px 20px;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.01em;
+      transition: opacity .2s, transform .15s;
+    }
+    .nav-cta:hover { opacity: .88; transform: scale(1.02); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all .25s;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -160px; left: 50%;
+      transform: translateX(-50%);
+      width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(28,61,156,.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-glow);
+      border: 1px solid var(--accent-edge);
+      color: var(--accent-text);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent-text);
+      animation: blink 2s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .3; }
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6.2vw, 80px);
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 1.03;
+      max-width: 920px;
+      margin-bottom: 22px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent-text);
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 18px);
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 64px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 30px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: all .2s;
+      cursor: pointer;
+    }
+    .btn-sm { padding: 10px 20px; font-size: 13px; }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-accent:hover { opacity: .88; transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border2);
+    }
+    .btn-ghost:hover { border-color: var(--accent-edge); color: var(--accent-text); }
+
+    .btn-arrow { font-size: 16px; }
+
+    /* VSL */
+    .vsl-wrap {
+      width: 100%;
+      max-width: 820px;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      border: 1px solid var(--border2);
+      box-shadow: 0 0 60px rgba(28,61,156,.1), 0 20px 60px rgba(0,0,0,.12);
+    }
+    .wistia_embed { aspect-ratio: 16/9; width: 100%; }
+
+    /* ─────────────────────────────────────────────────────────
+       STATS
+    ───────────────────────────────────────────────────────── */
+    .stats {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 20px;
+    }
+    .stats-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat {
+      text-align: center;
+      padding: 8px 24px;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-val {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-lbl { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+    /* ─────────────────────────────────────────────────────────
+       SHARED LAYOUT
+    ───────────────────────────────────────────────────────── */
+    section { padding: 100px 20px; }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+
+    .sec-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      margin-bottom: 16px;
+    }
+    .sec-eyebrow::before {
+      content: '';
+      width: 24px; height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .sec-title {
+      font-size: clamp(30px, 4vw, 52px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.07;
+      margin-bottom: 14px;
+    }
+
+    .sec-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 56px;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       DUAL CHANNEL CALLOUT
+    ───────────────────────────────────────────────────────── */
+    .dual-callout {
+      background: var(--accent-glow);
+      border: 1px solid var(--accent-edge);
+      border-radius: var(--r-lg);
+      padding: 40px;
+      margin-bottom: 60px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      gap: 20px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .dc-item h4 {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      letter-spacing: -.2px;
+    }
+    .dc-item p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .dc-item .dc-icon {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .dc-arrow {
+      font-size: 22px;
+      color: var(--accent-text);
+      font-weight: 300;
+    }
+
+    .dc-result {
+      background: var(--accent);
+      border-radius: var(--r);
+      padding: 20px 24px;
+    }
+    .dc-result h4 { color: #fff; font-size: 16px; font-weight: 800; margin-bottom: 4px; }
+    .dc-result p { color: rgba(255,255,255,.7); font-size: 13px; }
+
+    /* ─────────────────────────────────────────────────────────
+       PROBLEM
+    ───────────────────────────────────────────────────────── */
+    .problem-sec {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .prob-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .prob-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 26px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: border-color .2s;
+    }
+    .prob-card:hover { border-color: var(--border2); }
+
+    .prob-icon {
+      width: 38px; height: 38px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: var(--red-dim);
+      border: 1px solid var(--red-edge);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+    }
+
+    .prob-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 5px; letter-spacing: -.2px; }
+    .prob-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ─────────────────────────────────────────────────────────
+       SERVICES
+    ───────────────────────────────────────────────────────── */
+    .svc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .svc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 30px;
+      transition: border-color .25s, transform .2s;
+    }
+    .svc-card:hover { border-color: var(--accent-edge); transform: translateY(-3px); }
+    .svc-card.featured {
+      border-color: var(--accent-edge);
+      background: linear-gradient(135deg, var(--surface) 0%, rgba(28,61,156,.08) 100%);
+    }
+
+    .svc-ico {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      background: var(--accent-glow);
+      border: 1px solid var(--accent-edge);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 18px;
+    }
+
+    .svc-card h3 { font-size: 17px; font-weight: 800; letter-spacing: -.4px; margin-bottom: 8px; }
+    .svc-card > p { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+
+    .svc-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .svc-list li {
+      font-size: 13px; color: var(--muted);
+      display: flex; align-items: flex-start; gap: 7px;
+    }
+    .svc-list li::before {
+      content: '→'; color: var(--accent-text);
+      font-size: 11px; flex-shrink: 0; margin-top: 2px;
+    }
+
+    .svc-tag {
+      display: inline-flex;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--accent-text);
+      background: var(--accent-glow);
+      border: 1px solid var(--accent-edge);
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       CASE STUDIES
+    ───────────────────────────────────────────────────────── */
+    .cs-sec {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .cs-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .25s, transform .2s;
+    }
+    .cs-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .cs-card:hover::after { transform: scaleX(1); }
+    .cs-card:hover { border-color: var(--accent-edge); transform: translateY(-2px); }
+
+    .cs-tag {
+      display: inline-flex;
+      font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+      color: var(--accent-text);
+      background: var(--accent-glow); border: 1px solid var(--accent-edge);
+      padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+    }
+
+    .cs-card h3 { font-size: 20px; font-weight: 900; letter-spacing: -.6px; line-height: 1.2; margin-bottom: 10px; }
+    .cs-card > p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
+
+    .cs-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    .cs-metric {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .cs-mval {
+      font-size: 24px; font-weight: 900; letter-spacing: -.8px;
+      color: var(--text); line-height: 1; margin-bottom: 4px;
+    }
+    .cs-mlbl { font-size: 11px; color: var(--muted); font-weight: 500; line-height: 1.4; }
+
+    .cs-video {
+      margin-top: 20px;
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .cs-video .wistia_embed { aspect-ratio: 16/9; width: 100%; }
+
+    /* ─────────────────────────────────────────────────────────
+       PROCESS
+    ───────────────────────────────────────────────────────── */
+    .proc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .proc-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 28px;
+      transition: border-color .2s;
+    }
+    .proc-step:hover { border-color: var(--border2); }
+
+    .step-num {
+      font-size: 11px; font-weight: 800; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent-text);
+      margin-bottom: 14px; display: block;
+    }
+
+    .proc-step h4 { font-size: 16px; font-weight: 800; letter-spacing: -.3px; margin-bottom: 8px; }
+    .proc-step p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* ─────────────────────────────────────────────────────────
+       WHY US
+    ───────────────────────────────────────────────────────── */
+    .why-sec {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .why-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .why-list { display: flex; flex-direction: column; gap: 22px; }
+
+    .why-item { display: flex; gap: 14px; align-items: flex-start; }
+
+    .why-check {
+      width: 26px; height: 26px;
+      flex-shrink: 0; border-radius: 50%;
+      background: var(--accent-glow); border: 1px solid var(--accent-edge);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent-text); font-size: 12px; font-weight: 800;
+      margin-top: 2px;
+    }
+
+    .why-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; letter-spacing: -.2px; }
+    .why-item p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    .why-panel {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 40px;
+      position: sticky;
+      top: 88px;
+    }
+
+    .big-stat {
+      font-size: 72px; font-weight: 900; letter-spacing: -4px;
+      color: var(--text); line-height: 1; margin-bottom: 6px;
+    }
+
+    .why-panel > p { font-size: 15px; color: var(--muted); line-height: 1.65; margin-bottom: 32px; }
+
+    .divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+    .stack-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--dim); margin-bottom: 14px;
+    }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      background: var(--surface); border: 1px solid var(--border2);
+      color: var(--muted); font-size: 12px; font-weight: 600;
+      padding: 5px 12px; border-radius: 100px;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       TESTIMONIALS
+    ───────────────────────────────────────────────────────── */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .testi-grid-solo {
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .testi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 26px;
+    }
+
+    .stars { color: var(--accent-text); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+
+    .testi-text {
+      font-size: 14px; color: var(--text); line-height: 1.75;
+      margin-bottom: 22px; font-style: italic;
+    }
+
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border-radius: 50%; border: 2px solid var(--border);
+      overflow: hidden;
+    }
+    .testi-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .testi-name { font-size: 13px; font-weight: 700; }
+    .testi-role { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    /* ─────────────────────────────────────────────────────────
+       ABOUT ME
+    ───────────────────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    .about-photo-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Placeholder shown when photo file isn't available */
+    .about-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border2);
+      background: linear-gradient(135deg, var(--surface) 0%, rgba(28,61,156,.15) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .about-photo-accent {
+      position: absolute;
+      bottom: -16px; right: -16px;
+      background: var(--accent);
+      border-radius: var(--r);
+      padding: 16px 22px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(28,61,156,.4);
+    }
+    .about-photo-accent .apa-val {
+      font-size: 24px; font-weight: 900; letter-spacing: -1px; color: #fff; line-height: 1;
+    }
+    .about-photo-accent .apa-lbl { font-size: 11px; color: rgba(255,255,255,.7); margin-top: 3px; }
+
+    .about-content {}
+    .about-content h2 { margin-bottom: 18px; }
+    .about-content p {
+      font-size: 16px; color: var(--muted); line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .about-content p strong { color: var(--text); }
+
+    .about-stats {
+      display: flex;
+      gap: 32px;
+      margin: 28px 0;
+      flex-wrap: wrap;
+    }
+    .astat-val {
+      font-size: 28px; font-weight: 900; letter-spacing: -1px; color: var(--text); line-height: 1;
+    }
+    .astat-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    .about-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ─────────────────────────────────────────────────────────
+       CTA / BOOK
+    ───────────────────────────────────────────────────────── */
+    .book-sec { padding: 100px 20px; }
+
+    .book-box {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 72px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-box::before {
+      content: '';
+      position: absolute; top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(28,61,156,.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .book-box h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 900; letter-spacing: -2px;
+      line-height: 1.07; margin-bottom: 14px;
+    }
+
+    .book-box > p {
+      font-size: 16px; color: var(--muted); line-height: 1.75;
+      max-width: 480px; margin: 0 auto 32px;
+    }
+
+    .cta-trust {
+      display: flex; align-items: center; justify-content: center;
+      gap: 20px; flex-wrap: wrap;
+      margin-top: 18px;
+      font-size: 13px; color: var(--muted); font-weight: 500;
+    }
+
+    /* Cal.com embed */
+    .cal-embed-wrap {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      margin-top: 40px;
+      min-height: 600px;
+    }
+
+    /* ─────────────────────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 40px;
+    }
+
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+    }
+    .footer-logo img {
+      height: 28px; width: auto;
+    }
+    .footer-logo-text {
+      font-size: 17px; font-weight: 900; letter-spacing: -.4px;
+    }
+    .footer-logo-text em { font-style: normal; color: var(--accent-text); }
+
+    .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+    .footer-nav a { font-size: 13px; color: var(--muted); transition: color .2s; }
+    .footer-nav a:hover { color: var(--text); }
+    .footer-nav .yt-label {
+      font-size: 13px; color: var(--dim); cursor: default;
+    }
+
+    .footer-copy { font-size: 12px; color: var(--dim); }
+
+    /* ─────────────────────────────────────────────────────────
+       FADE-IN ANIMATIONS
+    ───────────────────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ─────────────────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 20px; }
+      .stat:nth-child(odd) { border-right: 1px solid var(--border); }
+      .stat:nth-last-child(-n+2) { border-bottom: none; }
+
+      .dual-callout { grid-template-columns: 1fr; }
+      .dc-arrow { display: none; }
+
+      .prob-grid, .svc-grid, .proc-grid, .testi-grid { grid-template-columns: 1fr; }
+      .cs-grid { grid-template-columns: 1fr; }
+      .why-layout { grid-template-columns: 1fr; gap: 40px; }
+      .why-panel { position: static; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo-accent { bottom: -10px; right: 10px; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 70px 16px; }
+      .book-box { padding: 48px 24px; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .hero-ctas .btn { justify-content: center; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-nav { justify-content: center; }
+      .cta-trust { flex-direction: column; gap: 8px; }
+      .about-stats { gap: 20px; }
+      .about-btns { flex-direction: column; }
+    }
+
+    /* Mobile nav overlay */
+    .mobile-nav {
+      display: none;
+      position: fixed; inset: 0;
+      background: var(--bg); z-index: 199;
+      flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 32px; padding-top: 64px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 22px; font-weight: 700; color: var(--text); }
+    .mobile-nav .m-cta {
+      background: var(--accent); color: #fff;
+      padding: 14px 36px; border-radius: 100px; font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════════════════ -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <!-- TODO: Replace with your actual logo file (logo.svg or logo.png) -->
+    <!-- Current: fetching from existing site CDN with white filter -->
+    <img
+      src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/688b831685c43f264c24607a_Logo_Black.svg"
+      alt="Futurr Digital"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+    />
+    <span class="nav-logo-text" style="display:none;">Futurr<em>.</em></span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#case-studies">Results</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#book" class="nav-cta">Book a Call</a></li>
+  </ul>
+
+  <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#case-studies" onclick="toggleMenu()">Results</a>
+  <a href="#process" onclick="toggleMenu()">Process</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#book" class="m-cta" onclick="toggleMenu()">Book a Call</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+
+  <div class="badge fade-up">
+    <div class="badge-dot"></div>
+    Cold Email · LinkedIn Outbound · Meta & Google Ads · Content Systems
+  </div>
+
+  <h1 class="fade-up">We Build the Outbound, LinkedIn & Paid Ads Systems That Fill Your <em>B2B Pipeline</em></h1>
+
+  <p class="hero-sub fade-up">
+    Done-for-you cold email + LinkedIn outbound + Meta & Google Ads + content so your ideal clients see your name everywhere, warm to your brand, and book calls. No SDR hiring. Leads as early as 14 days.
+  </p>
+
+  <div class="hero-ctas fade-up">
+    <a href="#book" class="btn btn-accent">Book a Free Strategy Call <span class="btn-arrow">→</span></a>
+    <a href="#case-studies" class="btn btn-ghost">See Our Results</a>
+  </div>
+
+  <!-- VSL -->
+  <div class="vsl-wrap fade-up">
+    <div style="position:relative;padding-top:56.25%;">
+      <iframe src="https://fast.wistia.net/embed/iframe/3635lm0eld?videoFoam=true"
+        title="Futurr VSL" allowtransparency="true" frameborder="0" scrolling="no"
+        allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STATS
+════════════════════════════════════════════════════════════ -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat fade-up">
+      <div class="stat-val">350K+</div>
+      <div class="stat-lbl">Leads Contacted</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-val">$3M+</div>
+      <div class="stat-lbl">Pipeline Generated</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-val">500+</div>
+      <div class="stat-lbl">Sales Meetings Booked</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-val">50+</div>
+      <div class="stat-lbl">B2B Clients Served</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROBLEM
+════════════════════════════════════════════════════════════ -->
+<section class="problem-sec" id="problem">
+  <div class="wrap">
+    <div class="sec-eyebrow fade-up">The Problem</div>
+    <h2 class="sec-title fade-up">Most B2B Lead Gen<br>Approaches Are Broken</h2>
+    <p class="sec-sub fade-up">Hiring SDRs is expensive and slow. Generic agencies blast templates. And most founders are invisible on LinkedIn, the #1 channel where buyers research vendors before they ever reply.</p>
+
+    <div class="prob-grid">
+      <div class="prob-card fade-up">
+        <div class="prob-icon">💸</div>
+        <div>
+          <h4>Expensive SDR Teams</h4>
+          <p>$80K+ per rep, months of ramp time, high turnover, and still no guarantee of a consistent pipeline.</p>
+        </div>
+      </div>
+      <div class="prob-card fade-up">
+        <div class="prob-icon">📤</div>
+        <div>
+          <h4>Generic Spray-and-Pray Campaigns</h4>
+          <p>Mass emails with zero personalization. Terrible reply rates. Burned domains and damaged brand reputation.</p>
+        </div>
+      </div>
+      <div class="prob-card fade-up">
+        <div class="prob-icon">👁️</div>
+        <div>
+          <h4>Invisible on LinkedIn</h4>
+          <p>Your buyers check LinkedIn before they reply to anyone. No presence = no trust = cold outreach that never converts, even if your offer is great.</p>
+        </div>
+      </div>
+      <div class="prob-card fade-up">
+        <div class="prob-icon">🐌</div>
+        <div>
+          <h4>Slow to Launch, Slow to Results</h4>
+          <p>Most agencies take 3+ months to onboard and another 3 before you see pipeline. We're live in days and delivering leads as early as 14 days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SERVICES
+════════════════════════════════════════════════════════════ -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-eyebrow fade-up">What We Do</div>
+    <h2 class="sec-title fade-up">Cold Email, LinkedIn & Paid Ads.<br>One Unified System.</h2>
+    <p class="sec-sub fade-up">Content warms the market. Outbound and paid ads close it. By the time a prospect gets your email, they've already seen your name on LinkedIn and in their feed, and that changes everything.</p>
+
+    <!-- Dual-channel callout -->
+    <div class="dual-callout fade-up">
+      <div class="dc-item">
+        <div class="dc-icon">✉️</div>
+        <h4>Cold Email</h4>
+        <p>AI-personalized sequences that land in primary inboxes and get replies at 2–3× industry rates</p>
+      </div>
+      <div class="dc-arrow">+</div>
+      <div class="dc-item">
+        <div class="dc-icon">📢</div>
+        <h4>LinkedIn Content</h4>
+        <p>30 posts/month in your voice build authority and keep you top-of-mind with your ICP</p>
+      </div>
+      <div class="dc-arrow">+</div>
+      <div class="dc-item">
+        <div class="dc-icon">🤝</div>
+        <h4>LinkedIn Outbound</h4>
+        <p>Targeted connection campaigns and warm DM sequences to your ideal buyers</p>
+      </div>
+      <div class="dc-arrow">+</div>
+      <div class="dc-item">
+        <div class="dc-icon">🎯</div>
+        <h4>Meta & Google Ads</h4>
+        <p>Paid lead gen campaigns on Meta and Google that put your offer in front of your ICP at scale</p>
+      </div>
+    </div>
+
+    <div class="svc-grid">
+      <div class="svc-card fade-up">
+        <div class="svc-tag">Cold Email</div>
+        <div class="svc-ico">✉️</div>
+        <h3>Cold Email Outbound</h3>
+        <p>AI-powered sequences built to land in primary inboxes and get replies from your ideal buyers.</p>
+        <ul class="svc-list">
+          <li>Custom domain & inbox setup</li>
+          <li>AI-personalized at scale</li>
+          <li>Proprietary sequencer, 2–3× reply rates</li>
+          <li>Deliverability monitoring & QA</li>
+        </ul>
+      </div>
+
+      <div class="svc-card featured fade-up">
+        <div class="svc-tag">LinkedIn</div>
+        <div class="svc-ico">📢</div>
+        <h3>LinkedIn Content & Authority</h3>
+        <p>We write 30 posts/month in your exact voice, positioning you as the expert your ICP follows, trusts, and buys from.</p>
+        <ul class="svc-list">
+          <li>Strategy + content calendar built for your ICP</li>
+          <li>Ghost-written in your voice; you approve, we post</li>
+          <li>Thought leadership that warms cold outreach</li>
+          <li>Profile optimization for inbound discovery</li>
+        </ul>
+      </div>
+
+      <div class="svc-card featured fade-up">
+        <div class="svc-tag">LinkedIn</div>
+        <div class="svc-ico">💼</div>
+        <h3>LinkedIn Outbound</h3>
+        <p>Signal-based outreach to your ICP on LinkedIn: warm connection campaigns and DM sequences that convert followers into calls.</p>
+        <ul class="svc-list">
+          <li>Targeted connection campaigns to ICP</li>
+          <li>Signal-based targeting (job changes, posts, activity)</li>
+          <li>Warm DM sequences with high response rates</li>
+          <li>Content + outbound running in parallel</li>
+        </ul>
+      </div>
+
+      <div class="svc-card fade-up">
+        <div class="svc-tag">Paid Ads</div>
+        <div class="svc-ico">🎯</div>
+        <h3>Meta & Google Ads</h3>
+        <p>Performance-driven paid lead gen on Meta and Googletargeting your ICP with offers that convert into qualified pipeline.</p>
+        <ul class="svc-list">
+          <li>Meta (Facebook & Instagram) lead campaigns</li>
+          <li>Google Search & Display targeting</li>
+          <li>Ad creative, copy & landing page setup</li>
+          <li>Retargeting audiences from organic traffic</li>
+        </ul>
+      </div>
+
+      <div class="svc-card fade-up">
+        <div class="svc-tag">AI-Powered</div>
+        <div class="svc-ico">🤖</div>
+        <h3>AI Enrichment & Targeting</h3>
+        <p>Proprietary tools that find, enrich, and qualify leads so every message lands with real context.</p>
+        <ul class="svc-list">
+          <li>Clay, Apollo & custom scrapers</li>
+          <li>Job change & intent signal triggers</li>
+          <li>Human-QA'd lead lists</li>
+          <li>CRM integration & pipeline tracking</li>
+        </ul>
+      </div>
+
+      <div class="svc-card fade-up">
+        <div class="svc-tag">Infrastructure</div>
+        <div class="svc-ico">🏗️</div>
+        <h3>Outbound Infrastructure</h3>
+        <p>The technical foundation most agencies skip, built to scale without getting burned or flagged.</p>
+        <ul class="svc-list">
+          <li>Domain portfolio & inbox rotation</li>
+          <li>Inbox warming protocols</li>
+          <li>Multi-channel sequencing</li>
+          <li>Automated lead routing</li>
+        </ul>
+      </div>
+
+      <div class="svc-card fade-up">
+        <div class="svc-tag">Automation</div>
+        <div class="svc-ico">📊</div>
+        <h3>Pipeline Automation</h3>
+        <p>Automate follow-up, tracking, and handoff so qualified leads flow directly into your calendar.</p>
+        <ul class="svc-list">
+          <li>Make.com & n8n workflows</li>
+          <li>CRM + calendar integration</li>
+          <li>Auto follow-up sequences</li>
+          <li>Weekly reporting & analytics</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CASE STUDIES
+════════════════════════════════════════════════════════════ -->
+<section class="cs-sec" id="case-studies">
+  <div class="wrap">
+    <div class="sec-eyebrow fade-up">Client Results</div>
+    <h2 class="sec-title fade-up">Real Clients.<br>Real Pipeline.</h2>
+    <p class="sec-sub fade-up">From construction to maritime recruiting to SaaS, here's what happens when you plug in the Futurr system.</p>
+
+    <div class="cs-grid">
+      <div class="cs-card fade-up">
+        <span class="cs-tag">Construction Documentation</span>
+        <h3>C-Level CDs: 200+ Calls in 12 Months</h3>
+        <p>Specialized construction documentation firm needed to reach architects at scale. We built a full outbound engine with targeted, research-backed messaging that drove consistent meetings month over month.</p>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="cs-mval">23</div><div class="cs-mlbl">New Clients in 4 months</div></div>
+          <div class="cs-metric"><div class="cs-mval">7.6%</div><div class="cs-mlbl">Reply Rate</div></div>
+          <div class="cs-metric"><div class="cs-mval">200+</div><div class="cs-mlbl">Qualified Sales Calls</div></div>
+          <div class="cs-metric"><div class="cs-mval">$408K</div><div class="cs-mlbl">Pipeline Generated</div></div>
+        </div>
+        <div class="cs-video">
+          <div style="position:relative;padding-top:56.25%;">
+            <iframe src="https://fast.wistia.net/embed/iframe/iej2ma30au?videoFoam=true"
+              title="C Level CDs Case Study" allowtransparency="true" frameborder="0" scrolling="no"
+              allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-card fade-up">
+        <span class="cs-tag">Maritime Recruiting</span>
+        <h3>Marnect: 2 Deals Closed in First 30 Days</h3>
+        <p>Niche maritime recruiting agency in a hard-to-reach vertical. We identified the right audience, built tailored sequences, and delivered closed deals within weeks of launch.</p>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="cs-mval">15</div><div class="cs-mlbl">Qualified Appointments</div></div>
+          <div class="cs-metric"><div class="cs-mval">7.2%</div><div class="cs-mlbl">Reply Rate</div></div>
+          <div class="cs-metric"><div class="cs-mval">2</div><div class="cs-mlbl">Deals Closed in 30 Days</div></div>
+          <div class="cs-metric"><div class="cs-mval">$620K</div><div class="cs-mlbl">Pipeline Generated</div></div>
+        </div>
+        <div class="cs-video">
+          <div style="position:relative;padding-top:56.25%;">
+            <iframe src="https://fast.wistia.net/embed/iframe/4j0cstf1lh?videoFoam=true"
+              title="Marnect Case Study" allowtransparency="true" frameborder="0" scrolling="no"
+              allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-card fade-up">
+        <span class="cs-tag">Tax Services</span>
+        <h3>Universal Tax Professionals: 155 Appointments</h3>
+        <p>Tax firm needed a consistent, predictable flow of qualified prospects. We launched a multi-channel outbound system that generated steady results month over month.</p>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="cs-mval">155</div><div class="cs-mlbl">Appointments Booked</div></div>
+          <div class="cs-metric"><div class="cs-mval">15</div><div class="cs-mlbl">Leads in First 30 Days</div></div>
+          <div class="cs-metric"><div class="cs-mval">14</div><div class="cs-mlbl">Days to First Results</div></div>
+          <div class="cs-metric"><div class="cs-mval">Top 3%</div><div class="cs-mlbl">Reply Rate in Sector</div></div>
+        </div>
+        <div class="cs-video">
+          <div style="position:relative;padding-top:56.25%;">
+            <iframe src="https://fast.wistia.net/embed/iframe/gf2vb4egsg?videoFoam=true"
+              title="UTP Case Study" allowtransparency="true" frameborder="0" scrolling="no"
+              allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-card fade-up">
+        <span class="cs-tag">Creative Agency</span>
+        <h3>Creative Agency: $12K Retainer in 30 Days</h3>
+        <p>Boutique creative agency with no predictable pipeline. We delivered 11 qualified meetings in the first monthand they closed a $12K monthly retainer within 30 days.</p>
+        <div class="cs-metrics">
+          <div class="cs-metric"><div class="cs-mval">11</div><div class="cs-mlbl">Meetings, Month One</div></div>
+          <div class="cs-metric"><div class="cs-mval">$12K</div><div class="cs-mlbl">Retainer Closed</div></div>
+          <div class="cs-metric"><div class="cs-mval">30</div><div class="cs-mlbl">Days to First Close</div></div>
+          <div class="cs-metric"><div class="cs-mval">$0→MRR</div><div class="cs-mlbl">Pipeline from Scratch</div></div>
+        </div>
+        <div class="cs-video">
+          <div style="position:relative;padding-top:56.25%;">
+            <iframe src="https://fast.wistia.net/embed/iframe/tgg77qu7cb?videoFoam=true"
+              title="Smart Object Case Study" allowtransparency="true" frameborder="0" scrolling="no"
+              allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PROCESS
+════════════════════════════════════════════════════════════ -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-eyebrow fade-up">How It Works</div>
+    <h2 class="sec-title fade-up">From Zero to Booked<br>Meetings in 14 Days</h2>
+    <p class="sec-sub fade-up">A proven 6-step system that gets your outbound engine live fastwithout the chaos.</p>
+
+    <div class="proc-grid">
+      <div class="proc-step fade-up">
+        <span class="step-num">Step 01</span>
+        <h4>Deep-Dive Audit</h4>
+        <p>We review your offer, ICP, LinkedIn presence, competitors, and positioning. We find what resonates before writing a single word.</p>
+      </div>
+      <div class="proc-step fade-up">
+        <span class="step-num">Step 02</span>
+        <h4>Infrastructure & Profile Build</h4>
+        <p>Email domain portfolio, inbox warming, sending infrastructure, plus LinkedIn profile optimization for inbound discovery.</p>
+      </div>
+      <div class="proc-step fade-up">
+        <span class="step-num">Step 03</span>
+        <h4>Lead List & Enrichment</h4>
+        <p>We use Clay, Apollo, and custom scrapers to build hyper-targeted lists enriched with intent signals and buying context.</p>
+      </div>
+      <div class="proc-step fade-up">
+        <span class="step-num">Step 04</span>
+        <h4>Dual-Channel Launch</h4>
+        <p>AI-personalized cold email sequences + LinkedIn outreach and content go live simultaneously. Your name shows up everywhere your ICP looks.</p>
+      </div>
+      <div class="proc-step fade-up">
+        <span class="step-num">Step 05</span>
+        <h4>Response Handling</h4>
+        <p>We manage replies, handle objections, and route interested prospects directly to your calendarzero lift on your end.</p>
+      </div>
+      <div class="proc-step fade-up">
+        <span class="step-num">Step 06</span>
+        <h4>Optimize & Scale</h4>
+        <p>Weekly reporting, A/B testing, and continuous optimization across both channels. What works gets doubled. What doesn't gets cut.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     WHY FUTURR
+════════════════════════════════════════════════════════════ -->
+<section class="why-sec">
+  <div class="wrap">
+    <div class="sec-eyebrow fade-up">Why Futurr</div>
+    <h2 class="sec-title fade-up">Not Another Agency.<br>A Working System.</h2>
+
+    <div class="why-layout">
+      <div class="why-list">
+        <div class="why-item fade-up">
+          <div class="why-check">✓</div>
+          <div>
+            <h4>Proprietary Sequencer Technology</h4>
+            <p>Our custom-built email sequencer and AI enrichment tools deliver 2–3× better reply rates than any off-the-shelf tool.</p>
+          </div>
+        </div>
+        <div class="why-item fade-up">
+          <div class="why-check">✓</div>
+          <div>
+            <h4>LinkedIn Content That Pre-Warms Your Market</h4>
+            <p>30 posts/month in your voice means prospects already know your name when they get your outreachdramatically increasing reply and close rates.</p>
+          </div>
+        </div>
+        <div class="why-item fade-up">
+          <div class="why-check">✓</div>
+          <div>
+            <h4>Live in Days, Leads in 14</h4>
+            <p>No 6-month onboarding. We build fast and launch fast. Qualified leads hit your calendar within 14 days.</p>
+          </div>
+        </div>
+        <div class="why-item fade-up">
+          <div class="why-check">✓</div>
+          <div>
+            <h4>Human QA on Every Campaign</h4>
+            <p>AI handles scale. Humans handle quality. Every message gets reviewed before it sends. Your brand is always protected.</p>
+          </div>
+        </div>
+        <div class="why-item fade-up">
+          <div class="why-check">✓</div>
+          <div>
+            <h4>No SDR Hiring. No Micromanaging.</h4>
+            <p>We own targeting, messaging, tech, QA, and optimization end-to-end. You only show up for discovery calls.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-panel fade-up">
+        <div class="big-stat">$3M+</div>
+        <p>In pipeline generated across 50+ B2B clients, from cold start to consistent qualified meetings.</p>
+        <div class="divider"></div>
+        <div class="stack-label">Tech Stack We Use</div>
+        <div class="chips">
+          <span class="chip">Clay</span>
+          <span class="chip">Apollo</span>
+          <span class="chip">Instantly</span>
+          <span class="chip">Smartlead</span>
+          <span class="chip">Make.com</span>
+          <span class="chip">n8n</span>
+          <span class="chip">GPT-4</span>
+          <span class="chip">Lemlist</span>
+          <span class="chip">Airtable</span>
+          <span class="chip">HubSpot</span>
+          <span class="chip">GoHighLevel</span>
+          <span class="chip">LinkedIn</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-eyebrow fade-up">What Clients Say</div>
+    <h2 class="sec-title fade-up">Words From the<br>People We've Built For</h2>
+    <p class="sec-sub fade-up">Founders across B2B sectors who needed consistent, qualified pipeline, and got it.</p>
+
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Okay, we're going to need to pause for a bit, our pipeline is full."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">
+            <img src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/67e958c6feea2102b0ca506c_images.jpeg" alt="Ryan Frost" />
+          </div>
+          <div>
+            <div class="testi-name">Ryan Frost</div>
+            <div class="testi-role">Owner, Marnect</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Game changer for us, TOTAL game changer!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">
+            <img src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/67e993abf801b7bf3d0e7c2b_pfiore.jpeg" alt="Paul Fiore" />
+          </div>
+          <div>
+            <div class="testi-name">Paul Fiore</div>
+            <div class="testi-role">Principal, C-Level CDs</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Good meetings, we've definitely closed some really terrific clients from your outreach."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">
+            <img src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/67e99231324c102df5dbfb05_jkatz.jpeg" alt="Josh Katz" />
+          </div>
+          <div>
+            <div class="testi-name">Josh Katz</div>
+            <div class="testi-role">Founder, Universal Tax Professionals</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-grid-solo">
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"I was skeptical at first. We'd tried agencies before and got nothing. Within 30 days we had 11 real meetings and closed a $12K retainer. Finally, an agency that delivers."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">
+            <img src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/67e958c6feea2102b0ca5069_Sasha_SO_Bio_-_Sasha_Shemirani.png" alt="Sasha Shemirani" />
+          </div>
+          <div>
+            <div class="testi-name">Sasha Shemirani</div>
+            <div class="testi-role">CEO, Smart Object</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ABOUT ME
+════════════════════════════════════════════════════════════ -->
+<section style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <!-- Photo -->
+      <div class="about-photo-wrap fade-up">
+        <img src="about-photo.png" alt="Magomed Dunkaev, Founder, Futurr Digital" />
+        <div class="about-photo-accent">
+          <div class="apa-val">3+ yrs</div>
+          <div class="apa-lbl">Building B2B Systems</div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="about-content fade-up">
+        <div class="sec-eyebrow">About</div>
+        <h2 class="sec-title">Hey, I'm Magomed.<br>I Build Systems.</h2>
+
+        <p>Founder of Futurr Digital. I help B2B founders get inbound clients through <strong>LinkedIn content + outbound + Meta & Google Ads</strong>, a system I've spent 3+ years refining for my own agency before bringing it to 50+ clients.</p>
+
+        <p>I started by building cold email and LinkedIn systems for my own business using Clay, Make, Apollo, and custom-built tech. Those same workflows let me grow without hiring extra staff. Now I install them for B2B founders across every vertical.</p>
+
+        <div class="about-stats">
+          <div>
+            <div class="astat-val">$3M+</div>
+            <div class="astat-lbl">Pipeline generated</div>
+          </div>
+          <div>
+            <div class="astat-val">500+</div>
+            <div class="astat-lbl">Meetings booked</div>
+          </div>
+          <div>
+            <div class="astat-val">50+</div>
+            <div class="astat-lbl">Clients served</div>
+          </div>
+        </div>
+
+        <div class="about-btns">
+          <a href="https://www.linkedin.com/in/mkdunkaev" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+            Connect on LinkedIn →
+          </a>
+          <a href="https://www.upwork.com/freelancers/dunkaev" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+            View on Upwork →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     BOOK / CTA
+════════════════════════════════════════════════════════════ -->
+<section class="book-sec" id="book">
+  <div class="wrap">
+    <div class="book-box fade-up">
+      <div class="sec-eyebrow" style="justify-content:center;">Get Started</div>
+      <h2>Ready to Build Your<br>Outbound, LinkedIn & Ads Engine?</h2>
+      <p>Book a free 30-minute intro call. We'll audit your current approach and map out exactly what a working outbound + LinkedIn + paid ads system looks like for your business.</p>
+
+      <a href="https://cal.com/futurrdigital/intro-call" class="btn btn-accent" style="display:inline-flex;" target="_blank" rel="noopener">
+        Book Your Free Intro Call <span class="btn-arrow">→</span>
+      </a>
+
+      <div class="cta-trust">
+        <span>✓ Free 30-min call</span>
+        <span>✓ No commitment</span>
+        <span>✓ Leads as early as 14 days</span>
+      </div>
+
+      <!-- Cal.com inline embed -->
+      <div class="cal-embed-wrap">
+        <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-intro-call"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <!-- TODO: Replace with your logo file -->
+      <img
+        src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/688b831685c43f264c24607a_Logo_Black.svg"
+        alt="Futurr Digital"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+      />
+      <span class="footer-logo-text" style="display:none;">Futurr<em>.</em></span>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="https://www.linkedin.com/in/mkdunkaev" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="javascript:void(0)" onclick="return false;">YouTube</a>
+      <a href="https://www.upwork.com/freelancers/dunkaev" target="_blank" rel="noopener">Upwork</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+
+    <p class="footer-copy">© 2026 Futurr Digital. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     JS
+════════════════════════════════════════════════════════════ -->
+<script>
+  /* ── Mobile menu ── */
+  function toggleMenu() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+
+  /* ── Fade-in on scroll ── */
+  const faders = document.querySelectorAll('.fade-up');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.10 });
+  faders.forEach(el => io.observe(el));
+
+  /* ── Stagger sibling cards ── */
+  document.querySelectorAll(
+    '.prob-grid, .svc-grid, .cs-grid, .proc-grid, .testi-grid, .stats-inner'
+  ).forEach(grid => {
+    grid.querySelectorAll('.fade-up').forEach((card, i) => {
+      card.style.transitionDelay = (i * 0.07) + 's';
+    });
+  });
+</script>
+
+<!-- Cal inline embed code begins -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "intro-call", {origin:"https://app.cal.com"});
+  Cal.ns["intro-call"]("inline", {
+    elementOrSelector:"#my-cal-inline-intro-call",
+    config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+    calLink: "futurrdigital/intro-call",
+  });
+  Cal.ns["intro-call"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#1C3D9C"},"dark":{"cal-brand":"#1C3D9C"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+<!-- Cal inline embed code ends -->
+
+</body>
+</html>

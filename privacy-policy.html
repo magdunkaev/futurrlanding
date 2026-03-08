@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Futurr Digital</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="shortcut icon" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff; --surface: #f8f8f8; --border: #e5e5e5;
+      --accent: #1C3D9C; --accent-text: #1C3D9C;
+      --text: #0d0d0d; --muted: #6b6b6b; --dim: #a0a0a0;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent-text); text-decoration: underline; }
+    a:hover { opacity: .8; }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 40px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,.92); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { text-decoration: none; }
+    .nav-logo img { height: 28px; }
+    .nav-logo-text { font-size: 18px; font-weight: 900; color: var(--text); letter-spacing: -.4px; }
+    .nav-logo-text em { font-style: normal; color: var(--accent-text); }
+    .nav-back {
+      font-size: 13px; font-weight: 600; color: var(--muted);
+      text-decoration: none; border: 1px solid var(--border);
+      padding: 8px 18px; border-radius: 100px;
+      transition: border-color .2s, color .2s;
+    }
+    .nav-back:hover { border-color: var(--accent-text); color: var(--accent-text); }
+
+    /* Content */
+    .page-wrap {
+      max-width: 760px; margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    .page-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 800; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent-text);
+      margin-bottom: 16px;
+    }
+    .page-tag::before {
+      content: ''; width: 20px; height: 2px;
+      background: var(--accent); border-radius: 2px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900; letter-spacing: -2px;
+      line-height: 1.07; margin-bottom: 12px;
+    }
+
+    .last-updated {
+      font-size: 13px; color: var(--muted); margin-bottom: 48px;
+      padding-bottom: 32px; border-bottom: 1px solid var(--border);
+    }
+
+    h2 {
+      font-size: 20px; font-weight: 800; letter-spacing: -.4px;
+      margin: 40px 0 12px; color: var(--text);
+    }
+
+    h3 {
+      font-size: 16px; font-weight: 700;
+      margin: 24px 0 8px; color: var(--text);
+    }
+
+    p {
+      font-size: 15px; color: var(--muted);
+      line-height: 1.8; margin-bottom: 14px;
+    }
+
+    ul {
+      list-style: none; margin: 0 0 16px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    ul li {
+      font-size: 15px; color: var(--muted);
+      display: flex; align-items: flex-start; gap: 10px; line-height: 1.7;
+    }
+    ul li::before {
+      content: '→'; color: var(--accent-text);
+      font-size: 12px; flex-shrink: 0; margin-top: 4px;
+    }
+
+    .contact-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px 32px; margin-top: 40px;
+    }
+    .contact-box h3 { margin-top: 0; }
+    .contact-box p { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img
+      src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/688b831685c43f264c24607a_Logo_Black.svg"
+      alt="Futurr Digital"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+    />
+    <span class="nav-logo-text" style="display:none;">Futurr<em>.</em></span>
+  </a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-tag">Legal</div>
+  <h1>Privacy Policy</h1>
+  <p class="last-updated">Last Updated: October 25, 2025</p>
+
+  <h2>1. Information We Collect</h2>
+
+  <h3>Personal Information</h3>
+  <p>We collect details you voluntarily provide, including:</p>
+  <ul>
+    <li>Name and contact information (email address, phone number, mailing address)</li>
+    <li>Appointment data and scheduling information</li>
+    <li>Payment details (processed securely through third-party providers)</li>
+    <li>Communications you send to us</li>
+  </ul>
+
+  <h3>Automatically Collected Information</h3>
+  <p>When you visit our site, we gather:</p>
+  <ul>
+    <li>IP address and browser type</li>
+    <li>Device specifications and operating system</li>
+    <li>Usage analytics and page interaction data</li>
+    <li>Tracking technologies including cookies and similar tools</li>
+  </ul>
+
+  <h2>2. SMS Messaging Program</h2>
+
+  <h3>SMS Terms and Disclosures</h3>
+  <ul>
+    <li><strong>Opt-In:</strong> Providing your phone number means consenting to texts for appointment reminders, customer service, or marketing based on your preferences.</li>
+    <li><strong>Message Frequency:</strong> Varies according to your appointment schedule and selected services.</li>
+    <li><strong>Rates:</strong> Message and data rates may apply based on your mobile carrier's plan.</li>
+    <li><strong>Opt-Out:</strong> Text "STOP" to any message for unsubscription; you will receive one final confirmation.</li>
+    <li><strong>Support:</strong> Text "HELP" or contact support for SMS assistance.</li>
+    <li><strong>No Sharing:</strong> Your mobile opt-in information and phone number will NOT be shared with third parties for their marketing purposes.</li>
+  </ul>
+
+  <h2>3. How We Use Your Information</h2>
+  <p>We use your data for:</p>
+  <ul>
+    <li>Service delivery and appointment processing</li>
+    <li>Appointment reminders and customer support</li>
+    <li>Marketing communications (if opted-in)</li>
+    <li>Service improvements and analytics</li>
+    <li>Legal compliance and fraud prevention</li>
+  </ul>
+
+  <h2>4. How We Share Your Information</h2>
+
+  <h3>Service Providers</h3>
+  <p>Third-party vendors handling SMS, payments, analytics, and support are contractually bound to protect your information.</p>
+
+  <h3>Legal Requirements</h3>
+  <p>Information may be disclosed when required by law or valid legal requests.</p>
+
+  <h3>Business Transfers</h3>
+  <p>During mergers or acquisitions, information may transfer to the acquiring company.</p>
+
+  <p><strong>Important:</strong> We do not sell, rent, or share your personal information, including your phone number or SMS opt-in data, with third parties for their marketing purposes.</p>
+
+  <h2>5. Data Security</h2>
+  <p>We implement reasonable protective measures to safeguard your data. However, no method of transmission over the internet or electronic storage is 100% secure. We cannot guarantee absolute security but are committed to using industry-standard practices.</p>
+
+  <h2>6. Your Rights and Choices</h2>
+  <ul>
+    <li><strong>Access/Correction:</strong> Request access to or modification of your personal data.</li>
+    <li><strong>Deletion:</strong> Request removal of your data, subject to legal constraints.</li>
+    <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications at any time.</li>
+    <li><strong>Do Not Track:</strong> This website does not respond to Do Not Track browser signals.</li>
+  </ul>
+
+  <h2>7. Children's Privacy</h2>
+  <p>Our services are not intended for individuals under the age of 18. We do not knowingly collect personal information from children. If we discover that a child has provided us with personal information, we will delete it immediately.</p>
+
+  <h2>8. Third-Party Links</h2>
+  <p>Our website may contain links to external sites. We are not responsible for the content, privacy practices, or terms of those sites. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+
+  <h2>9. Policy Updates</h2>
+  <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date. Continued use of our services after changes are posted constitutes your acceptance of the updated policy.</p>
+
+  <div class="contact-box">
+    <h3>10. Contact Information</h3>
+    <p><strong>Futurr Digital / Astra Ecommerce LLC</strong></p>
+    <p>Email: <a href="mailto:support@futurrdigital.com">support@futurrdigital.com</a></p>
+    <p>Website: <a href="https://futurrdigital.com">futurrdigital.com</a></p>
+    <p>SMS Support: Text HELP to any message</p>
+  </div>
+</div>
+
+</body>
+</html>
