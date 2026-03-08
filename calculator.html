@@ -681,7 +681,6 @@
     document.getElementById('cp-calls-cost').textContent = fmt(perfFee);
     document.getElementById('cp-rate-note').textContent  = `$${priceCall} × ${fmtN(calls)} calls`;
     document.getElementById('total-cost').textContent    = fmt(totalMonthlyCost);
-    document.getElementById('onetime-cost').textContent  = `$${domainOneTime.toLocaleString()}`;
     document.getElementById('onetime-note').innerHTML    =
       `One-time domain setup: <strong>$${domainOneTime.toLocaleString()}</strong> (${pkg.domains} domains × $${DOMAIN_YEAR})`;
 
