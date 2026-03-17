@@ -230,6 +230,22 @@
       padding: 10px 14px; background: var(--surface2); border-radius: 8px;
     }
 
+    /* ─── PRICING TOGGLE ─── */
+    .pricing-toggle {
+      display: inline-flex; align-items: center;
+      background: var(--surface2); border-radius: 100px;
+      padding: 4px; gap: 2px; margin-bottom: 20px;
+    }
+    .pt-btn {
+      padding: 9px 22px; border-radius: 100px; border: none;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      background: transparent; color: var(--muted);
+      font-family: inherit; transition: all .2s;
+    }
+    .pt-btn.active {
+      background: var(--accent); color: #fff;
+    }
+
     /* ROI hero */
     .roi-banner {
       background: var(--accent); border-radius: var(--r-lg);
@@ -381,13 +397,27 @@
 
     <!-- STEP 2 -->
     <div class="step-label">Step 2 — Your Numbers</div>
+
+    <div class="pricing-toggle">
+      <button class="pt-btn active" id="pt-ppc" onclick="setPricingMode('ppc')">Pay Per Call</button>
+      <button class="pt-btn" id="pt-retainer" onclick="setPricingMode('retainer')">Monthly Retainer</button>
+    </div>
+
     <div class="inputs-grid">
 
-      <div class="input-card">
+      <div class="input-card" id="card-ppc">
         <div class="input-title">Price per Qualified Call</div>
         <div class="input-hint">What you pay per qualified show-up call delivered.</div>
         <div class="dollar-input-wrap">
           <input type="number" id="pricePerCall" class="dollar-input" value="250" min="1" step="10" oninput="calc()" />
+        </div>
+      </div>
+
+      <div class="input-card" id="card-retainer" style="display:none;">
+        <div class="input-title">Monthly Retainer Fee</div>
+        <div class="input-hint">Flat monthly fee you charge your client regardless of call volume.</div>
+        <div class="dollar-input-wrap">
+          <input type="number" id="retainerFee" class="dollar-input" value="3000" min="0" step="500" oninput="calc()" />
         </div>
       </div>
 
@@ -450,7 +480,7 @@
         <div class="funnel-step highlight">
           <div class="funnel-info">
             <div class="funnel-step-label">Qualified Show-Up Calls</div>
-            <div class="funnel-step-rate">40% of leads · you pay per this</div>
+            <div class="funnel-step-rate" id="f-calls-rate">40% of leads · you pay per this</div>
           </div>
           <div class="funnel-step-val" id="f-calls">16</div>
         </div>
@@ -490,9 +520,9 @@
         </div>
 
         <div class="cost-block">
-          <div class="cost-section-title">Performance Fee</div>
+          <div class="cost-section-title" id="cp-section-title">Performance Fee</div>
           <div class="cost-row">
-            <span class="cost-lbl">Qualified calls <span class="cost-sub" id="cp-calls-lbl">(16 calls)</span></span>
+            <span class="cost-lbl" id="cp-calls-label">Qualified calls <span class="cost-sub" id="cp-calls-lbl">(16 calls)</span></span>
             <span class="cost-val" id="cp-calls-cost">$4,000</span>
           </div>
           <div style="font-size:11px;color:var(--dim);padding-top:4px;" id="cp-rate-note">$250 × 16 calls</div>
@@ -606,6 +636,16 @@
   const DOMAIN_YEAR = 11;
 
   let currentPkg = 0;
+  let pricingMode = 'ppc'; // 'ppc' | 'retainer'
+
+  function setPricingMode(mode) {
+    pricingMode = mode;
+    document.getElementById('pt-ppc').classList.toggle('active', mode === 'ppc');
+    document.getElementById('pt-retainer').classList.toggle('active', mode === 'retainer');
+    document.getElementById('card-ppc').style.display     = mode === 'ppc'      ? '' : 'none';
+    document.getElementById('card-retainer').style.display = mode === 'retainer' ? '' : 'none';
+    calc();
+  }
 
   function selectPackage(el) {
     document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('selected'));
@@ -651,8 +691,9 @@
     const infraMonthly    = SOFTWARE + inboxCost + domainMonthly;
     const domainOneTime   = pkg.domains * DOMAIN_YEAR;
 
-    // Performance fee
-    const perfFee = calls * priceCall;
+    // Performance fee / retainer
+    const retainerFee = parseFloat(document.getElementById('retainerFee').value) || 0;
+    const perfFee     = pricingMode === 'ppc' ? calls * priceCall : retainerFee;
 
     // Totals
     const totalMonthlyCost = infraMonthly + perfFee;
@@ -677,9 +718,19 @@
     document.getElementById('ci-domains').textContent    = `(${pkg.domains} × $${(DOMAIN_YEAR/12).toFixed(2)}/mo)`;
     document.getElementById('ci-domain-cost').textContent = fmt(domainMonthly);
     document.getElementById('ci-infra-total').textContent = fmt(infraMonthly);
-    document.getElementById('cp-calls-lbl').textContent  = `(${fmtN(calls)} calls)`;
-    document.getElementById('cp-calls-cost').textContent = fmt(perfFee);
-    document.getElementById('cp-rate-note').textContent  = `$${priceCall} × ${fmtN(calls)} calls`;
+    if (pricingMode === 'ppc') {
+      document.getElementById('cp-section-title').textContent = 'Performance Fee';
+      document.getElementById('cp-calls-label').innerHTML     = `Qualified calls <span class="cost-sub" id="cp-calls-lbl">(${fmtN(calls)} calls)</span>`;
+      document.getElementById('cp-calls-cost').textContent    = fmt(perfFee);
+      document.getElementById('cp-rate-note').textContent     = `$${priceCall} × ${fmtN(calls)} calls`;
+      document.getElementById('f-calls-rate').textContent     = '40% of leads · you pay per this';
+    } else {
+      document.getElementById('cp-section-title').textContent = 'Monthly Retainer';
+      document.getElementById('cp-calls-label').innerHTML     = `Flat monthly fee`;
+      document.getElementById('cp-calls-cost').textContent    = fmt(retainerFee);
+      document.getElementById('cp-rate-note').textContent     = `Fixed regardless of call volume`;
+      document.getElementById('f-calls-rate').textContent     = '40% of leads · tracked but not billed';
+    }
     document.getElementById('total-cost').textContent    = fmt(totalMonthlyCost);
     document.getElementById('onetime-note').innerHTML    =
       `One-time domain setup: <strong>$${domainOneTime.toLocaleString()}</strong> (${pkg.domains} domains × $${DOMAIN_YEAR})`;
