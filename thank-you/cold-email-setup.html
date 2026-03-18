@@ -166,6 +166,48 @@
       overflow: hidden;
     }
 
+    /* ── WARNING BAR ── */
+    .warning-bar {
+      background: #fff8f0;
+      border: 1px solid #f0d0a0;
+      border-radius: 6px;
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #555;
+      text-align: center;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+    .warning-bar strong { color: #111; }
+
+    /* ── BULLET TITLES ── */
+    .bullet-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: #111;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+    .bullet-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 4px;
+    }
+    .bullet-desc {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.65;
+    }
+
     /* ── QUALIFIER ── */
     .qualifier-bar {
       background: #f5f5f5;
@@ -227,27 +269,44 @@
     Watch the full video above, then we'll see you on the call.
   </div>
 
+  <!-- WARNING BAR -->
+  <div class="warning-bar">
+    This offer is for <strong>B2B Companies &amp; Marketing Agencies only.</strong> If you sell to consumers, please do not continue.
+  </div>
+
   <hr class="divider" />
 
   <!-- BULLET POINTS -->
   <div class="bullets-section">
-    <h2>Here's why you made the right decision:</h2>
+    <h2>4 Reasons to Get Started Now:</h2>
     <ul class="bullets">
       <li>
-        <div class="check">✓</div>
-        <div><strong>No expensive agency retainers.</strong> You only pay for real results — qualified calls that actually show up, not vague monthly fees with nothing to show for it.</div>
+        <div class="bullet-num">1</div>
+        <div>
+          <div class="bullet-title">No Expensive Agency Retainers</div>
+          <div class="bullet-desc">No bloated monthly retainer to an agency that can't prove results. A one-time setup fee, then straightforward monthly costs for infrastructure and campaign management — that's it.</div>
+        </div>
       </li>
       <li>
-        <div class="check">✓</div>
-        <div><strong>Dedicated sending infrastructure built for you.</strong> Private domains and inboxes set up exclusively for your campaigns — so your emails land, not spam folders.</div>
+        <div class="bullet-num">2</div>
+        <div>
+          <div class="bullet-title">Dedicated Sending Infrastructure</div>
+          <div class="bullet-desc">Automatic IP rotation, load balancing, blacklist detection, isolated sending environments, and full DMARC/SPF/DKIM monitoring — built to keep your emails landing in primary inboxes.</div>
+        </div>
       </li>
       <li>
-        <div class="check">✓</div>
-        <div><strong>More qualified leads for less than hiring a sales team.</strong> No SDR salaries, no ramp time, no turnover. A fully managed system that runs every single day.</div>
+        <div class="bullet-num">3</div>
+        <div>
+          <div class="bullet-title">More Leads for Less</div>
+          <div class="bullet-desc">Skip the ad spend and reach decision-makers directly in their inbox. Cold email consistently outperforms paid channels at a fraction of the cost.</div>
+        </div>
       </li>
       <li>
-        <div class="check">✓</div>
-        <div><strong>We do everything for you.</strong> Copywriting, targeting, sending, replies, call booking — handled. You show up to meetings with interested prospects ready to talk.</div>
+        <div class="bullet-num">4</div>
+        <div>
+          <div class="bullet-title">We Handle Everything for You</div>
+          <div class="bullet-desc">Don't spend weeks figuring out the tech, the copy, and the targeting yourself. We set it all up and run it — you just show up to calls.</div>
+        </div>
       </li>
     </ul>
   </div>
