@@ -3,1376 +3,878 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Futurr Digital | Done-For-You B2B Outbound, LinkedIn & Paid Ads Systems</title>
-  <meta name="description" content="Done-for-you cold email, LinkedIn outbound, and paid ads (Meta & Google) systems that generate qualified B2B pipeline in as little as 14 days. No SDR hiring. No guesswork." />
-
-  <!-- Favicon -->
+  <title>Futurr Digital | Growth Architecture for Predictable Client Acquisition</title>
+  <meta name="description" content="We engineer growth systems that make client acquisition scalable and predictable. Built around intelligence, not volume. Qualified meetings in as early as 14 days." />
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="shortcut icon" href="favicon.png" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
   <style>
-    /* ─────────────────────────────────────────────────────────
-       RESET & TOKENS
-    ───────────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:           #ffffff;
-      --surface:      #f8f8f8;
-      --surface2:     #f0f0f0;
-      --border:       #e5e5e5;
-      --border2:      #d0d0d0;
-      --accent:       #1C3D9C;          /* brand bluesolid fills, buttons */
-      --accent-text:  #1C3D9C;          /* brand bluetext on light bg */
-      --accent-glow:  rgba(28, 61, 156, 0.07);
-      --accent-edge:  rgba(28, 61, 156, 0.20);
-      --text:         #0d0d0d;
-      --muted:        #6b6b6b;
-      --dim:          #a0a0a0;
-      --red-dim:      rgba(220, 50, 50, 0.08);
-      --red-edge:     rgba(220, 50, 50, 0.18);
-      --r:            14px;
-      --r-lg:         22px;
-      --r-xl:         32px;
+      --bg:       #f9f9f7;
+      --white:    #ffffff;
+      --dark:     #1C3D9C;
+      --darker:   #132b6e;
+      --border:   #e4e3df;
+      --border2:  #cccbc6;
+      --text:     #1a1a1a;
+      --mid:      #464641;
+      --muted:    #8a8880;
+      --inv:      rgba(255,255,255,0.75);
+      --inv-dim:  rgba(255,255,255,0.4);
+      --blue-tag: rgba(28,61,156,0.10);
+      --blue-bdr: rgba(28,61,156,0.22);
+      --r:        12px;
+      --r-lg:     20px;
+      --r-xl:     28px;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
 
-    /* ─────────────────────────────────────────────────────────
-       NAV
-    ───────────────────────────────────────────────────────── */
+    /* ── NAV ────────────────────────────── */
     .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      padding: 0 40px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
+      position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+      z-index: 300;
+      width: calc(100% - 48px); max-width: 1100px;
+      height: 60px; padding: 0 20px 0 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 16px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
     }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .nav-logo img { height: 26px; width: auto; }
+    .nav-logo-text { font-size: 17px; font-weight: 700; letter-spacing: -0.3px; }
+    .nav-logo-text em { font-style: normal; color: var(--dark); }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-    }
-    .nav-logo img {
-      height: 32px;
-      width: auto;
-    }
-    .nav-logo-text {
-      font-size: 19px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-    }
-    .nav-logo-text em { font-style: normal; color: var(--accent-text); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--muted);
-      transition: color .2s;
-    }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 400; color: var(--mid); transition: color .2s; }
     .nav-links a:hover { color: var(--text); }
 
     .nav-cta {
-      background: var(--accent);
-      color: #fff !important;
-      padding: 9px 20px;
-      border-radius: 100px;
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 0.01em;
-      transition: opacity .2s, transform .15s;
+      display: inline-flex; align-items: center;
+      padding: 10px 22px; border-radius: 100px;
+      font-size: 14px; font-weight: 600; letter-spacing: -0.1px;
+      background: #0f1a2e; color: #fff;
+      transition: opacity .2s; flex-shrink: 0;
     }
-    .nav-cta:hover { opacity: .88; transform: scale(1.02); }
+    .nav-cta:hover { opacity: .85; }
 
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; background: var(--bg);
+      z-index: 299; flex-direction: column; align-items: center;
+      justify-content: center; gap: 32px;
     }
-    .hamburger span {
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: all .25s;
-    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 20px; font-weight: 600; color: var(--text); }
+    .mobile-nav .m-cta { background: #0f1a2e; color: #fff; padding: 14px 32px; border-radius: 100px; font-weight: 700; }
 
-    /* ─────────────────────────────────────────────────────────
-       HERO
-    ───────────────────────────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 20px 80px;
-      position: relative;
-      overflow: hidden;
-    }
+    /* ── SHARED ─────────────────────────── */
+    .wrap      { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+    .wrap-md   { max-width: 840px;  margin: 0 auto; padding: 0 32px; }
+    .wrap-sm   { max-width: 660px;  margin: 0 auto; padding: 0 32px; }
 
-    .hero-glow {
-      position: absolute;
-      top: -160px; left: 50%;
-      transform: translateX(-50%);
-      width: 900px; height: 900px;
-      background: radial-gradient(circle, rgba(28,61,156,.08) 0%, transparent 65%);
-      pointer-events: none;
+    /* eyebrow */
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--dark); margin-bottom: 16px;
     }
+    .eyebrow-muted { color: var(--muted); }
+    .eyebrow-inv { color: var(--inv-dim); }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent-glow);
-      border: 1px solid var(--accent-edge);
-      color: var(--accent-text);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 7px 16px;
-      border-radius: 100px;
-      margin-bottom: 28px;
-    }
-    .badge-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent-text);
-      animation: blink 2s infinite;
-      flex-shrink: 0;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: .3; }
-    }
+    /* serif headings */
+    .serif { font-family: 'DM Serif Display', serif; font-weight: 400; }
+    .serif-i { font-family: 'DM Serif Display', serif; font-weight: 400; font-style: italic; }
 
-    .hero h1 {
-      font-size: clamp(38px, 6.2vw, 80px);
-      font-weight: 900;
-      letter-spacing: -3px;
-      line-height: 1.03;
-      max-width: 920px;
-      margin-bottom: 22px;
-    }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--accent-text);
-    }
+    .h1 { font-size: clamp(44px, 7vw, 82px); line-height: 1.05; letter-spacing: -0.5px; }
+    .h2 { font-size: clamp(34px, 5vw, 60px); line-height: 1.08; letter-spacing: -0.3px; }
+    .h3 { font-size: clamp(22px, 3vw, 32px); line-height: 1.15; letter-spacing: -0.2px; }
+    .h4 { font-size: 20px; line-height: 1.3; }
 
-    .hero-sub {
-      font-size: clamp(16px, 2vw, 18px);
-      color: var(--muted);
-      max-width: 560px;
-      line-height: 1.75;
-      margin-bottom: 40px;
-    }
-
-    .hero-ctas {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 64px;
-    }
-
+    /* buttons */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 15px 30px;
-      border-radius: 100px;
-      font-size: 15px;
-      font-weight: 700;
-      transition: all .2s;
-      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+      cursor: pointer; border: none; transition: all .2s;
     }
-    .btn-sm { padding: 10px 20px; font-size: 13px; }
-
-    .btn-accent {
-      background: var(--accent);
-      color: #fff;
+    .btn-filled {
+      background: var(--dark); color: #fff;
+      padding: 13px 26px; border-radius: 8px;
     }
-    .btn-accent:hover { opacity: .88; transform: translateY(-1px); }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid var(--border2);
+    .btn-filled:hover { opacity: .86; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; color: var(--dark);
+      border: 1.5px solid var(--dark);
+      padding: 12px 24px; border-radius: 8px;
     }
-    .btn-ghost:hover { border-color: var(--accent-edge); color: var(--accent-text); }
-
-    .btn-arrow { font-size: 16px; }
-
-    /* VSL */
-    .vsl-wrap {
-      width: 100%;
-      max-width: 820px;
-      border-radius: var(--r-lg);
-      overflow: hidden;
-      border: 1px solid var(--border2);
-      box-shadow: 0 0 60px rgba(28,61,156,.1), 0 20px 60px rgba(0,0,0,.12);
+    .btn-outline:hover { background: var(--dark); color: #fff; }
+    .btn-outline-white {
+      background: transparent; color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      padding: 12px 24px; border-radius: 8px;
     }
-    .wistia_embed { aspect-ratio: 16/9; width: 100%; }
+    .btn-outline-white:hover { border-color: #fff; }
 
-    /* ─────────────────────────────────────────────────────────
-       STATS
-    ───────────────────────────────────────────────────────── */
-    .stats {
-      background: var(--surface);
+    /* ── HERO ───────────────────────────── */
+    .hero {
+      padding: 140px 32px 80px;
+      background: var(--bg);
+      text-align: center;
+    }
+    .hero-eyebrow { color: var(--muted); margin-bottom: 20px; font-size: 12px; letter-spacing: 0.12em; }
+    .hero-h1 { margin-bottom: 24px; }
+    .hero-sub {
+      font-size: 17px; color: var(--mid); line-height: 1.75;
+      max-width: 540px; margin: 0 auto 32px;
+    }
+    .hero-cta-note {
+      font-size: 12px; color: var(--muted); margin-top: 14px;
+      max-width: 420px; margin-left: auto; margin-right: auto; line-height: 1.6;
+    }
+    .hero-video {
+      max-width: 860px; margin: 64px auto 0;
+      border-radius: var(--r-xl); overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 48px rgba(0,0,0,0.10);
+    }
+
+    /* ── LOGOS + STATS ──────────────────── */
+    .logos-sec {
+      padding: 56px 32px;
+      background: var(--white);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 48px 20px;
     }
-    .stats-inner {
-      max-width: 920px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+    .logos-caption {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+      text-align: center; margin-bottom: 28px;
     }
-    .stat {
-      text-align: center;
-      padding: 8px 24px;
-      border-right: 1px solid var(--border);
+    .logos-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px; flex-wrap: wrap; margin-bottom: 48px;
     }
-    .stat:last-child { border-right: none; }
+    .logo-name { font-size: 14px; font-weight: 600; color: #ccc; letter-spacing: -0.2px; }
+
+    .stats-row {
+      display: flex; justify-content: center; gap: 0;
+      border-top: 1px solid var(--border); padding-top: 40px;
+      max-width: 700px; margin: 0 auto;
+    }
+    .stat-item { flex: 1; text-align: center; padding: 0 32px; border-right: 1px solid var(--border); }
+    .stat-item:last-child { border-right: none; }
     .stat-val {
-      font-size: clamp(32px, 4vw, 48px);
-      font-weight: 900;
-      letter-spacing: -2px;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 6px;
+      font-family: 'DM Serif Display', serif; font-weight: 400;
+      font-size: clamp(36px, 5vw, 52px); letter-spacing: -1px;
+      color: var(--dark); line-height: 1; margin-bottom: 6px;
     }
-    .stat-lbl { font-size: 13px; color: var(--muted); font-weight: 500; }
+    .stat-lbl { font-size: 13px; color: var(--mid); font-weight: 500; }
 
-    /* ─────────────────────────────────────────────────────────
-       SHARED LAYOUT
-    ───────────────────────────────────────────────────────── */
-    section { padding: 100px 20px; }
-    .wrap { max-width: 1100px; margin: 0 auto; }
-
-    .sec-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--accent-text);
-      margin-bottom: 16px;
+    /* ── PROBLEMS ───────────────────────── */
+    .prob-sec {
+      padding: 100px 32px;
+      background: var(--bg);
     }
-    .sec-eyebrow::before {
-      content: '';
-      width: 24px; height: 2px;
-      background: var(--accent);
-      border-radius: 2px;
+    .prob-heading { margin-bottom: 48px; }
+    .prob-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 64px; }
+    .prob-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 28px;
     }
+    .prob-tag {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.10em; text-transform: uppercase;
+      color: var(--dark); background: var(--blue-tag);
+      border: 1px solid var(--blue-bdr);
+      padding: 4px 10px; border-radius: 100px; margin-bottom: 16px;
+    }
+    .prob-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.2px; }
+    .prob-card p { font-size: 14px; color: var(--mid); line-height: 1.7; }
 
-    .sec-title {
-      font-size: clamp(30px, 4vw, 52px);
-      font-weight: 900;
-      letter-spacing: -2px;
-      line-height: 1.07;
+    .prob-close { text-align: left; }
+    .prob-close p { font-size: 16px; color: var(--mid); margin-top: 8px; }
+
+    /* ── ARCHITECTURE (dark) ────────────── */
+    .arch-sec {
+      background: var(--dark);
+      padding: 100px 32px;
+    }
+    .arch-sec .eyebrow { color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+    .arch-heading { margin-bottom: 64px; }
+    .arch-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+    .arch-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      padding: 36px;
+    }
+    .arch-card:first-child { border-radius: var(--r-lg) 0 0 0; }
+    .arch-card:nth-child(2) { border-radius: 0 var(--r-lg) 0 0; }
+    .arch-card:nth-child(3) { border-radius: 0 0 0 var(--r-lg); }
+    .arch-card:last-child { border-radius: 0 0 var(--r-lg) 0; }
+    .arch-num {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
       margin-bottom: 14px;
     }
-
-    .sec-sub {
-      font-size: 17px;
-      color: var(--muted);
-      max-width: 560px;
-      line-height: 1.75;
-      margin-bottom: 56px;
+    .arch-card h3 {
+      font-family: 'DM Serif Display', serif; font-weight: 400;
+      font-size: 24px; color: #fff; margin-bottom: 12px;
     }
+    .arch-card p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.75; }
 
-    /* ─────────────────────────────────────────────────────────
-       DUAL CHANNEL CALLOUT
-    ───────────────────────────────────────────────────────── */
-    .dual-callout {
-      background: var(--accent-glow);
-      border: 1px solid var(--accent-edge);
-      border-radius: var(--r-lg);
-      padding: 40px;
-      margin-bottom: 60px;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
-      gap: 20px;
-      align-items: center;
-      text-align: center;
-    }
+    /* ── CASE STUDIES ───────────────────── */
+    .cs-sec { padding: 100px 32px; background: var(--bg); }
+    .cs-sec .h2 { margin-bottom: 64px; }
 
-    .dc-item h4 {
-      font-size: 15px;
-      font-weight: 800;
-      margin-bottom: 6px;
-      letter-spacing: -.2px;
-    }
-    .dc-item p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-    .dc-item .dc-icon {
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
-
-    .dc-arrow {
-      font-size: 22px;
-      color: var(--accent-text);
-      font-weight: 300;
-    }
-
-    .dc-result {
-      background: var(--accent);
-      border-radius: var(--r);
-      padding: 20px 24px;
-    }
-    .dc-result h4 { color: #fff; font-size: 16px; font-weight: 800; margin-bottom: 4px; }
-    .dc-result p { color: rgba(255,255,255,.7); font-size: 13px; }
-
-    /* ─────────────────────────────────────────────────────────
-       PROBLEM
-    ───────────────────────────────────────────────────────── */
-    .problem-sec {
-      background: var(--surface);
+    .cs-item {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+      align-items: center; padding: 64px 0;
       border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
     }
+    .cs-item:first-child { border-top: none; padding-top: 0; }
+    .cs-item.reverse { direction: rtl; }
+    .cs-item.reverse > * { direction: ltr; }
 
-    .prob-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+    .cs-quote-col {}
+    .cs-quote-mark {
+      font-family: 'DM Serif Display', serif; font-size: 80px;
+      line-height: 1; color: var(--dark); opacity: 0.2;
+      margin-bottom: -20px; display: block;
     }
+    .cs-quote {
+      font-family: 'DM Serif Display', serif; font-weight: 400;
+      font-size: clamp(28px, 4vw, 42px); line-height: 1.1;
+      letter-spacing: -0.3px; color: var(--text); margin-bottom: 24px;
+    }
+    .cs-client { font-size: 14px; color: var(--mid); font-weight: 500; margin-bottom: 28px; }
+    .cs-client strong { color: var(--text); font-weight: 700; }
 
-    .prob-card {
-      background: var(--bg);
+    .cs-media-col {}
+    .cs-video-wrap {
+      border-radius: var(--r-lg); overflow: hidden;
       border: 1px solid var(--border);
-      border-radius: var(--r);
-      padding: 26px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      transition: border-color .2s;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.07);
+      margin-bottom: 20px;
     }
-    .prob-card:hover { border-color: var(--border2); }
-
-    .prob-icon {
-      width: 38px; height: 38px;
-      flex-shrink: 0;
-      border-radius: 10px;
-      background: var(--red-dim);
-      border: 1px solid var(--red-edge);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 17px;
+    .cs-video-inner { position: relative; padding-top: 56.25%; }
+    .cs-video-inner iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .cs-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .cs-bullets li {
+      font-size: 14px; color: var(--mid); display: flex; gap: 10px; align-items: flex-start;
     }
-
-    .prob-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 5px; letter-spacing: -.2px; }
-    .prob-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
-
-    /* ─────────────────────────────────────────────────────────
-       SERVICES
-    ───────────────────────────────────────────────────────── */
-    .svc-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    .cs-bullets li::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--dark); flex-shrink: 0; margin-top: 6px;
     }
-
-    .svc-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      padding: 30px;
-      transition: border-color .25s, transform .2s;
+    .cs-metrics { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; }
+    .cs-metric-item {}
+    .cs-metric-val {
+      font-family: 'DM Serif Display', serif; font-size: 28px;
+      color: var(--dark); line-height: 1; letter-spacing: -0.5px;
     }
-    .svc-card:hover { border-color: var(--accent-edge); transform: translateY(-3px); }
-    .svc-card.featured {
-      border-color: var(--accent-edge);
-      background: linear-gradient(135deg, var(--surface) 0%, rgba(28,61,156,.08) 100%);
+    .cs-metric-lbl { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* ── PROCESS ────────────────────────── */
+    .proc-sec { padding: 100px 32px; background: var(--white); border-top: 1px solid var(--border); }
+    .proc-sec .h2 { margin-bottom: 72px; }
+    .proc-item {
+      display: grid; grid-template-columns: 200px 1fr 340px; gap: 48px;
+      align-items: start; padding: 48px 0; border-top: 1px solid var(--border);
     }
-
-    .svc-ico {
-      width: 46px; height: 46px;
-      border-radius: 12px;
-      background: var(--accent-glow);
-      border: 1px solid var(--accent-edge);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      margin-bottom: 18px;
+    .proc-item:last-child { border-bottom: 1px solid var(--border); }
+    .proc-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--dark); padding-top: 4px;
     }
-
-    .svc-card h3 { font-size: 17px; font-weight: 800; letter-spacing: -.4px; margin-bottom: 8px; }
-    .svc-card > p { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
-
-    .svc-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .svc-list li {
-      font-size: 13px; color: var(--muted);
-      display: flex; align-items: flex-start; gap: 7px;
+    .proc-label span { display: block; color: var(--muted); font-weight: 500; margin-top: 2px; letter-spacing: 0; text-transform: none; font-size: 11px; }
+    .proc-content h3 {
+      font-family: 'DM Serif Display', serif; font-size: 26px; font-weight: 400;
+      letter-spacing: -0.3px; margin-bottom: 12px;
     }
-    .svc-list li::before {
-      content: '→'; color: var(--accent-text);
-      font-size: 11px; flex-shrink: 0; margin-top: 2px;
+    .proc-content p { font-size: 15px; color: var(--mid); line-height: 1.75; }
+    .proc-checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+    .proc-checklist li { font-size: 13px; color: var(--mid); display: flex; gap: 8px; }
+    .proc-checklist li::before { content: '✓'; color: var(--dark); font-weight: 700; flex-shrink: 0; }
+
+    .proc-card {
+      background: var(--dark); border-radius: var(--r-lg);
+      padding: 24px; align-self: start;
     }
-
-    .svc-tag {
-      display: inline-flex;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: var(--accent-text);
-      background: var(--accent-glow);
-      border: 1px solid var(--accent-edge);
-      padding: 3px 10px;
-      border-radius: 100px;
-      margin-bottom: 12px;
+    .proc-card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--inv-dim); margin-bottom: 12px; }
+    .proc-card-title {
+      font-family: 'DM Serif Display', serif; font-size: 22px; font-weight: 400;
+      color: #fff; margin-bottom: 4px;
     }
+    .proc-card-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+    .proc-card-dot { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.6); }
+    .proc-card-dot::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
+    .proc-card-empty { display: none; }
 
-    /* ─────────────────────────────────────────────────────────
-       CASE STUDIES
-    ───────────────────────────────────────────────────────── */
-    .cs-sec {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    /* ── RESULTS (dark) ─────────────────── */
+    .results-sec {
+      background: var(--darker);
+      padding: 100px 32px;
     }
-
-    .cs-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+    .results-sec .eyebrow { color: rgba(255,255,255,0.3); }
+    .results-sec .h2 { color: #fff; margin-bottom: 48px; }
+    .results-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .result-card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09);
+      border-radius: var(--r-lg); padding: 24px 28px;
     }
-
-    .cs-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      padding: 32px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color .25s, transform .2s;
+    .result-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+    .result-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10); padding: 3px 10px; border-radius: 100px;
     }
-    .cs-card::after {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px; background: var(--accent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform .35s ease;
+    .result-amount {
+      font-family: 'DM Serif Display', serif; font-size: 32px; font-weight: 400;
+      color: #fff; letter-spacing: -1px; line-height: 1;
     }
-    .cs-card:hover::after { transform: scaleX(1); }
-    .cs-card:hover { border-color: var(--accent-edge); transform: translateY(-2px); }
+    .result-amount-lbl { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 2px; text-align: right; }
+    .result-name { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 16px; }
+    .result-stats { display: flex; gap: 20px; flex-wrap: wrap; }
+    .result-stat {}
+    .result-stat-val { font-size: 18px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: -0.5px; }
+    .result-stat-lbl { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 1px; }
 
-    .cs-tag {
-      display: inline-flex;
-      font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
-      color: var(--accent-text);
-      background: var(--accent-glow); border: 1px solid var(--accent-edge);
-      padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
-    }
-
-    .cs-card h3 { font-size: 20px; font-weight: 900; letter-spacing: -.6px; line-height: 1.2; margin-bottom: 10px; }
-    .cs-card > p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; }
-
-    .cs-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-    .cs-metric {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 16px;
-    }
-    .cs-mval {
-      font-size: 24px; font-weight: 900; letter-spacing: -.8px;
-      color: var(--text); line-height: 1; margin-bottom: 4px;
-    }
-    .cs-mlbl { font-size: 11px; color: var(--muted); font-weight: 500; line-height: 1.4; }
-
-    .cs-video {
-      margin-top: 20px;
-      border-radius: var(--r);
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-    .cs-video .wistia_embed { aspect-ratio: 16/9; width: 100%; }
-
-    /* ─────────────────────────────────────────────────────────
-       PROCESS
-    ───────────────────────────────────────────────────────── */
-    .proc-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .proc-step {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      padding: 28px;
-      transition: border-color .2s;
-    }
-    .proc-step:hover { border-color: var(--border2); }
-
-    .step-num {
-      font-size: 11px; font-weight: 800; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--accent-text);
-      margin-bottom: 14px; display: block;
-    }
-
-    .proc-step h4 { font-size: 16px; font-weight: 800; letter-spacing: -.3px; margin-bottom: 8px; }
-    .proc-step p { font-size: 13px; color: var(--muted); line-height: 1.7; }
-
-    /* ─────────────────────────────────────────────────────────
-       WHY US
-    ───────────────────────────────────────────────────────── */
-    .why-sec {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .why-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .why-list { display: flex; flex-direction: column; gap: 22px; }
-
-    .why-item { display: flex; gap: 14px; align-items: flex-start; }
-
-    .why-check {
-      width: 26px; height: 26px;
-      flex-shrink: 0; border-radius: 50%;
-      background: var(--accent-glow); border: 1px solid var(--accent-edge);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent-text); font-size: 12px; font-weight: 800;
-      margin-top: 2px;
-    }
-
-    .why-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; letter-spacing: -.2px; }
-    .why-item p { font-size: 13px; color: var(--muted); line-height: 1.65; }
-
-    .why-panel {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      padding: 40px;
-      position: sticky;
-      top: 88px;
-    }
-
-    .big-stat {
-      font-size: 72px; font-weight: 900; letter-spacing: -4px;
-      color: var(--text); line-height: 1; margin-bottom: 6px;
-    }
-
-    .why-panel > p { font-size: 15px; color: var(--muted); line-height: 1.65; margin-bottom: 32px; }
-
-    .divider { height: 1px; background: var(--border); margin: 24px 0; }
-
-    .stack-label {
-      font-size: 11px; font-weight: 700; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--dim); margin-bottom: 14px;
-    }
-
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip {
-      background: var(--surface); border: 1px solid var(--border2);
-      color: var(--muted); font-size: 12px; font-weight: 600;
-      padding: 5px 12px; border-radius: 100px;
-    }
-
-    /* ─────────────────────────────────────────────────────────
-       TESTIMONIALS
-    ───────────────────────────────────────────────────────── */
-    .testi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    .testi-grid-solo {
-      display: grid;
-      grid-template-columns: 1fr;
-      justify-content: center;
-      gap: 18px;
-      margin-top: 18px;
-    }
-
+    /* ── TESTIMONIALS ───────────────────── */
+    .testi-sec { padding: 100px 32px; background: var(--bg); }
+    .testi-sec .h2 { margin-bottom: 56px; }
+    .testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .testi-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      padding: 26px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 28px 32px;
     }
-
-    .stars { color: var(--accent-text); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
-
-    .testi-text {
-      font-size: 14px; color: var(--text); line-height: 1.75;
-      margin-bottom: 22px; font-style: italic;
-    }
-
-    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-author { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
     .testi-avatar {
-      width: 44px; height: 44px; flex-shrink: 0;
-      border-radius: 50%; border: 2px solid var(--border);
-      overflow: hidden;
+      width: 44px; height: 44px; border-radius: 50%; overflow: hidden;
+      border: 2px solid var(--border); flex-shrink: 0;
     }
-    .testi-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .testi-name { font-size: 13px; font-weight: 700; }
-    .testi-role { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .testi-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .testi-name { font-size: 14px; font-weight: 700; color: var(--text); }
+    .testi-role { font-size: 12px; color: var(--muted); margin-top: 1px; }
+    .testi-text { font-size: 15px; color: var(--mid); line-height: 1.75; font-style: italic; }
 
-    /* ─────────────────────────────────────────────────────────
-       ABOUT ME
-    ───────────────────────────────────────────────────────── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 360px 1fr;
-      gap: 64px;
-      align-items: center;
+    /* ── FAQ ────────────────────────────── */
+    .faq-sec { padding: 100px 32px; background: var(--white); border-top: 1px solid var(--border); }
+    .faq-header { margin-bottom: 48px; }
+    .faq-header p { font-size: 16px; color: var(--mid); margin-top: 16px; max-width: 520px; line-height: 1.7; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-of-type { border-top: 1px solid var(--border); }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 0; cursor: pointer; gap: 20px;
     }
-
-    .about-photo-wrap {
-      position: relative;
-    }
-
-    .about-photo-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Placeholder shown when photo file isn't available */
-    .about-photo-placeholder {
-      width: 100%;
-      aspect-ratio: 3/4;
-      border-radius: var(--r-lg);
-      border: 1px solid var(--border2);
-      background: linear-gradient(135deg, var(--surface) 0%, rgba(28,61,156,.15) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: var(--muted);
-      text-align: center;
-      padding: 20px;
-    }
-
-    .about-photo-accent {
-      position: absolute;
-      bottom: -16px; right: -16px;
-      background: var(--accent);
-      border-radius: var(--r);
-      padding: 16px 22px;
-      text-align: center;
-      box-shadow: 0 8px 32px rgba(28,61,156,.4);
-    }
-    .about-photo-accent .apa-val {
-      font-size: 24px; font-weight: 900; letter-spacing: -1px; color: #fff; line-height: 1;
-    }
-    .about-photo-accent .apa-lbl { font-size: 11px; color: rgba(255,255,255,.7); margin-top: 3px; }
-
-    .about-content {}
-    .about-content h2 { margin-bottom: 18px; }
-    .about-content p {
-      font-size: 16px; color: var(--muted); line-height: 1.8;
-      margin-bottom: 16px;
-    }
-    .about-content p strong { color: var(--text); }
-
-    .about-stats {
-      display: flex;
-      gap: 32px;
-      margin: 28px 0;
-      flex-wrap: wrap;
-    }
-    .astat-val {
-      font-size: 28px; font-weight: 900; letter-spacing: -1px; color: var(--text); line-height: 1;
-    }
-    .astat-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; }
-
-    .about-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-
-    /* ─────────────────────────────────────────────────────────
-       CTA / BOOK
-    ───────────────────────────────────────────────────────── */
-    .book-sec { padding: 100px 20px; }
-
-    .book-box {
-      max-width: 800px;
-      margin: 0 auto;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r-xl);
-      padding: 72px 48px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .book-box::before {
-      content: '';
-      position: absolute; top: -120px; left: 50%;
-      transform: translateX(-50%);
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(28,61,156,.08) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .book-box h2 {
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 900; letter-spacing: -2px;
-      line-height: 1.07; margin-bottom: 14px;
-    }
-
-    .book-box > p {
-      font-size: 16px; color: var(--muted); line-height: 1.75;
-      max-width: 480px; margin: 0 auto 32px;
-    }
-
-    .cta-trust {
+    .faq-q span { font-size: 16px; font-weight: 600; color: var(--text); letter-spacing: -0.2px; }
+    .faq-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 1.5px solid var(--border2); flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
-      gap: 20px; flex-wrap: wrap;
-      margin-top: 18px;
-      font-size: 13px; color: var(--muted); font-weight: 500;
+      font-size: 16px; color: var(--mid); transition: all .2s;
     }
-
-    /* Cal.com embed */
-    .cal-embed-wrap {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      overflow: hidden;
-      margin-top: 40px;
-      min-height: 600px;
+    .faq-item.open .faq-icon { background: var(--dark); border-color: var(--dark); color: #fff; transform: rotate(45deg); }
+    .faq-a {
+      font-size: 15px; color: var(--mid); line-height: 1.8;
+      padding-bottom: 22px; max-width: 680px; display: none;
     }
+    .faq-item.open .faq-a { display: block; }
 
-    /* ─────────────────────────────────────────────────────────
-       FOOTER
-    ───────────────────────────────────────────────────────── */
+
+    /* ── FOOTER ─────────────────────────── */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 36px 40px;
+      background: #1C3D9C;
+      margin: 0 24px 24px;
+      border-radius: 20px;
+      padding: 52px 48px 40px;
     }
+    .footer-inner { max-width: 1080px; margin: 0 auto; }
+    .footer-logo-wrap { display: flex; align-items: center; margin-bottom: 8px; }
+    .footer-logo-wrap img { height: 24px; width: auto; filter: brightness(0) invert(1); }
+    .footer-logo-text { font-size: 16px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+    .footer-logo-text em { font-style: normal; color: rgba(255,255,255,0.45); }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.38); margin-bottom: 22px; }
+    .footer-socials { display: flex; gap: 18px; margin-bottom: 44px; }
+    .footer-social-btn {
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.45); transition: color .2s;
+    }
+    .footer-social-btn:hover { color: rgba(255,255,255,0.85); }
+    .footer-social-btn svg { width: 18px; height: 18px; fill: currentColor; }
+    .footer-divider { height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 24px; }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
 
-    .footer-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 20px; flex-wrap: wrap;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-    }
-    .footer-logo img {
-      height: 28px; width: auto;
-    }
-    .footer-logo-text {
-      font-size: 17px; font-weight: 900; letter-spacing: -.4px;
-    }
-    .footer-logo-text em { font-style: normal; color: var(--accent-text); }
-
-    .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
-    .footer-nav a { font-size: 13px; color: var(--muted); transition: color .2s; }
-    .footer-nav a:hover { color: var(--text); }
-    .footer-nav .yt-label {
-      font-size: 13px; color: var(--dim); cursor: default;
-    }
-
-    .footer-copy { font-size: 12px; color: var(--dim); }
-
-    /* ─────────────────────────────────────────────────────────
-       FADE-IN ANIMATIONS
-    ───────────────────────────────────────────────────────── */
-    .fade-up {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity .55s ease, transform .55s ease;
-    }
+    /* ── ANIMATIONS ─────────────────────── */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease; }
     .fade-up.visible { opacity: 1; transform: none; }
 
-    /* ─────────────────────────────────────────────────────────
-       RESPONSIVE
-    ───────────────────────────────────────────────────────── */
-    @media (max-width: 900px) {
+    /* ── RESPONSIVE ─────────────────────── */
+    @media (max-width: 960px) {
       .nav { padding: 0 20px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 20px; }
-      .stat:nth-child(odd) { border-right: 1px solid var(--border); }
-      .stat:nth-last-child(-n+2) { border-bottom: none; }
-
-      .dual-callout { grid-template-columns: 1fr; }
-      .dc-arrow { display: none; }
-
-      .prob-grid, .svc-grid, .proc-grid, .testi-grid { grid-template-columns: 1fr; }
-      .cs-grid { grid-template-columns: 1fr; }
-      .why-layout { grid-template-columns: 1fr; gap: 40px; }
-      .why-panel { position: static; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .about-photo-accent { bottom: -10px; right: 10px; }
+      .prob-grid { grid-template-columns: 1fr; }
+      .arch-grid { grid-template-columns: 1fr; }
+      .arch-card:first-child { border-radius: var(--r-lg) var(--r-lg) 0 0; }
+      .arch-card:nth-child(2) { border-radius: 0; }
+      .arch-card:nth-child(3) { border-radius: 0; }
+      .arch-card:last-child { border-radius: 0 0 var(--r-lg) var(--r-lg); }
+      .cs-item, .cs-item.reverse { grid-template-columns: 1fr; direction: ltr; gap: 32px; }
+      .proc-item { grid-template-columns: 1fr; gap: 20px; }
+      .proc-card-empty { display: none; }
+      .results-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .cta-card { grid-template-columns: 1fr; padding: 40px 28px; gap: 36px; }
+      .stats-row { flex-direction: column; gap: 0; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 20px 0; }
+      .stat-item:last-child { border-bottom: none; }
     }
-
     @media (max-width: 600px) {
-      section { padding: 70px 16px; }
-      .book-box { padding: 48px 24px; }
-      .hero-ctas { flex-direction: column; align-items: stretch; }
-      .hero-ctas .btn { justify-content: center; }
-      .footer-inner { flex-direction: column; text-align: center; }
-      .footer-nav { justify-content: center; }
-      .cta-trust { flex-direction: column; gap: 8px; }
-      .about-stats { gap: 20px; }
-      .about-btns { flex-direction: column; }
-    }
-
-    /* Mobile nav overlay */
-    .mobile-nav {
-      display: none;
-      position: fixed; inset: 0;
-      background: var(--bg); z-index: 199;
-      flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 32px; padding-top: 64px;
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav a { font-size: 22px; font-weight: 700; color: var(--text); }
-    .mobile-nav .m-cta {
-      background: var(--accent); color: #fff;
-      padding: 14px 36px; border-radius: 100px; font-weight: 800;
+      .hero { padding: 120px 20px 64px; }
+      .prob-sec, .arch-sec, .cs-sec, .proc-sec, .results-sec, .testi-sec, .faq-sec, .cta-sec { padding: 72px 20px; }
+      .logos-sec { padding: 44px 20px; }
+      .logos-row { gap: 24px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
-     NAV
-════════════════════════════════════════════════════════════ -->
+<!-- ╔══════════════════════════════╗
+     ║  NAV                        ║
+     ╚══════════════════════════════╝ -->
 <nav class="nav">
   <a href="#" class="nav-logo">
-    <!-- TODO: Replace with your actual logo file (logo.svg or logo.png) -->
-    <!-- Current: fetching from existing site CDN with white filter -->
-    <img
-      src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/688b831685c43f264c24607a_Logo_Black.svg"
-      alt="Futurr Digital"
-      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-    />
+    <img src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/688b831685c43f264c24607a_Logo_Black.svg" alt="Futurr Digital"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
     <span class="nav-logo-text" style="display:none;">Futurr<em>.</em></span>
   </a>
-
   <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#case-studies">Results</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#book" class="nav-cta">Book a Call</a></li>
+    <li><a href="#system">The System</a></li>
+    <li><a href="#results">Client Outcomes</a></li>
+    <li><a href="#process">Our Process</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
-
-  <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- Mobile nav overlay -->
 <div class="mobile-nav" id="mobileNav">
-  <a href="#services" onclick="toggleMenu()">Services</a>
-  <a href="#case-studies" onclick="toggleMenu()">Results</a>
-  <a href="#process" onclick="toggleMenu()">Process</a>
-  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#system" onclick="toggleMenu()">The System</a>
+  <a href="#results" onclick="toggleMenu()">Client Outcomes</a>
+  <a href="#process" onclick="toggleMenu()">Our Process</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
   <a href="#book" class="m-cta" onclick="toggleMenu()">Book a Call</a>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     HERO
-════════════════════════════════════════════════════════════ -->
-<section class="hero" id="home">
-  <div class="hero-glow"></div>
-
-  <div class="badge fade-up">
-    <div class="badge-dot"></div>
-    Cold Email · LinkedIn Outbound · Meta & Google Ads · Content Systems
-  </div>
-
-  <h1 class="fade-up">We Build the Outbound, LinkedIn & Paid Ads Systems That Fill Your <em>B2B Pipeline</em></h1>
-
-  <p class="hero-sub fade-up">
-    Done-for-you cold email + LinkedIn outbound + Meta & Google Ads + content so your ideal clients see your name everywhere, warm to your brand, and book calls. No SDR hiring. Leads as early as 14 days.
-  </p>
-
-  <div class="hero-ctas fade-up">
-    <a href="#book" class="btn btn-accent">Book a Free Strategy Call <span class="btn-arrow">→</span></a>
-    <a href="#case-studies" class="btn btn-ghost">See Our Results</a>
-  </div>
-
-  <!-- VSL -->
-  <div class="vsl-wrap fade-up">
-    <div style="position:relative;padding-top:56.25%;">
-      <iframe src="https://fast.wistia.net/embed/iframe/3635lm0eld?videoFoam=true"
-        title="Futurr VSL" allowtransparency="true" frameborder="0" scrolling="no"
-        allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;"></iframe>
+<!-- ╔══════════════════════════════╗
+     ║  HERO                       ║
+     ╚══════════════════════════════╝ -->
+<section class="hero">
+  <div class="wrap-md" style="text-align:center;">
+    <span class="eyebrow eyebrow-muted fade-up">Most Agencies Sell Campaigns. We Build Growth Systems.</span>
+    <h1 class="h1 fade-up" style="margin-bottom:24px;">
+      <span class="serif">Growth Architecture Engineered</span><br>
+      <span class="serif-i">For Predictable Revenue Growth</span>
+    </h1>
+    <p class="hero-sub fade-up">Everyone is pulling the same lists and sending the same AI slop. We engineer the growth system underneath it: outbound that gets read, compounds every week, and turns client acquisition into something you can actually predict. Done for you. Built to scale.</p>
+    <div class="hero-video fade-up">
+      <div style="position:relative;padding-top:56.25%;">
+        <iframe src="https://fast.wistia.net/embed/iframe/3635lm0eld?videoFoam=true"
+          title="Futurr VSL" allowtransparency="true" frameborder="0" scrolling="no"
+          allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;"></iframe>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     STATS
-════════════════════════════════════════════════════════════ -->
-<div class="stats">
-  <div class="stats-inner">
-    <div class="stat fade-up">
-      <div class="stat-val">350K+</div>
-      <div class="stat-lbl">Leads Contacted</div>
+<!-- ╔══════════════════════════════╗
+     ║  LOGOS + STATS              ║
+     ╚══════════════════════════════╝ -->
+<div class="logos-sec">
+  <div class="wrap">
+    <p class="logos-caption">Trusted by B2B founders and consultants across 50+ markets</p>
+    <div class="logos-row">
+      <span class="logo-name">C-Level CDs</span>
+      <span class="logo-name">Universal Tax Professionals</span>
+      <span class="logo-name">Marnect</span>
+      <span class="logo-name">Smart Object</span>
     </div>
-    <div class="stat fade-up">
-      <div class="stat-val">$3M+</div>
-      <div class="stat-lbl">Pipeline Generated</div>
-    </div>
-    <div class="stat fade-up">
-      <div class="stat-val">500+</div>
-      <div class="stat-lbl">Sales Meetings Booked</div>
-    </div>
-    <div class="stat fade-up">
-      <div class="stat-val">50+</div>
-      <div class="stat-lbl">B2B Clients Served</div>
+    <div class="stats-row">
+      <div class="stat-item fade-up">
+        <div class="stat-val">$3M+</div>
+        <div class="stat-lbl">Qualified pipeline generated</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-val">500+</div>
+        <div class="stat-lbl">Sales meetings booked</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-val">50+</div>
+        <div class="stat-lbl">B2B clients served</div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PROBLEM
-════════════════════════════════════════════════════════════ -->
-<section class="problem-sec" id="problem">
+<!-- ╔══════════════════════════════╗
+     ║  PROBLEMS                   ║
+     ╚══════════════════════════════╝ -->
+<section class="prob-sec" id="problem">
   <div class="wrap">
-    <div class="sec-eyebrow fade-up">The Problem</div>
-    <h2 class="sec-title fade-up">Most B2B Lead Gen<br>Approaches Are Broken</h2>
-    <p class="sec-sub fade-up">Hiring SDRs is expensive and slow. Generic agencies blast templates. And most founders are invisible on LinkedIn, the #1 channel where buyers research vendors before they ever reply.</p>
-
+    <div class="prob-heading fade-up">
+      <h2 class="h2">
+        <span class="serif">The Old Way of Buying Growth Is</span><br>
+        <span class="serif-i">Fundamentally Broken</span>
+      </h2>
+    </div>
     <div class="prob-grid">
       <div class="prob-card fade-up">
-        <div class="prob-icon">💸</div>
-        <div>
-          <h4>Expensive SDR Teams</h4>
-          <p>$80K+ per rep, months of ramp time, high turnover, and still no guarantee of a consistent pipeline.</p>
-        </div>
+        <span class="prob-tag">Problem 01</span>
+        <h3>Saturated Lists</h3>
+        <p>Pulling generic lists from Apollo or Sales Nav? So is everyone else. That data is inaccurate, oversold, and your prospects are already drowning in identical emails from your competitors.</p>
       </div>
       <div class="prob-card fade-up">
-        <div class="prob-icon">📤</div>
-        <div>
-          <h4>Generic Spray-and-Pray Campaigns</h4>
-          <p>Mass emails with zero personalization. Terrible reply rates. Burned domains and damaged brand reputation.</p>
-        </div>
+        <span class="prob-tag">Problem 02</span>
+        <h3>AI Doing the Work</h3>
+        <p>AI-written messages every prospect spots in two seconds. The market does not need AI writing the email. It needs AI deciding who to send it to, and why.</p>
       </div>
       <div class="prob-card fade-up">
-        <div class="prob-icon">👁️</div>
-        <div>
-          <h4>Invisible on LinkedIn</h4>
-          <p>Your buyers check LinkedIn before they reply to anyone. No presence = no trust = cold outreach that never converts, even if your offer is great.</p>
-        </div>
+        <span class="prob-tag">Problem 03</span>
+        <h3>Nothing Compounds</h3>
+        <p>No feedback loop. Same lists, same copy, same blind spots, month after month. Random results that never get better and never get cheaper.</p>
       </div>
-      <div class="prob-card fade-up">
-        <div class="prob-icon">🐌</div>
-        <div>
-          <h4>Slow to Launch, Slow to Results</h4>
-          <p>Most agencies take 3+ months to onboard and another 3 before you see pipeline. We're live in days and delivering leads as early as 14 days.</p>
-        </div>
+    </div>
+    <div class="prob-close fade-up">
+      <h3 class="h3 serif">Not three separate problems. <em class="serif-i">One system problem.</em></h3>
+      <p>And no combination of individual tactics can fix them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗
+     ║  ARCHITECTURE (dark)        ║
+     ╚══════════════════════════════╝ -->
+<section class="arch-sec" id="system">
+  <div class="wrap">
+    <span class="eyebrow fade-up">The Futurr Approach</span>
+    <div class="arch-heading fade-up">
+      <h2 class="h2" style="color:#fff;">
+        <span class="serif" style="color:#fff;">A 4-Component Growth</span><br>
+        <span class="serif-i" style="color:rgba(255,255,255,0.7);">Operating System</span>
+      </h2>
+    </div>
+    <div class="arch-grid fade-up">
+      <div class="arch-card">
+        <div class="arch-num">Component 01</div>
+        <h3>Market Intelligence</h3>
+        <p>We analyze your ICP, buyer psychology, and competitive landscape before writing a word. Every send is grounded in real research about who buys and why.</p>
+      </div>
+      <div class="arch-card">
+        <div class="arch-num">Component 02</div>
+        <h3>Campaign Hypothesis</h3>
+        <p>That intelligence becomes a specific, testable angle: the right segment, positioning, and offer to validate first. Not guesswork. A reasoned thesis.</p>
+      </div>
+      <div class="arch-card">
+        <div class="arch-num">Component 03</div>
+        <h3>Unified Outbound</h3>
+        <p>Sequences go live on dedicated, protected infrastructure. Real buyer data flows back. Your hypothesis gets tested against actual market response, not assumptions.</p>
+      </div>
+      <div class="arch-card">
+        <div class="arch-num">Component 04</div>
+        <h3>Compounding Intelligence</h3>
+        <p>Every reply, metric, and signal feeds back in. The hypothesis sharpens. Each iteration outperforms the last. The system never resets. It compounds.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     SERVICES
-════════════════════════════════════════════════════════════ -->
-<section id="services">
+<!-- ╔══════════════════════════════╗
+     ║  CASE STUDIES               ║
+     ╚══════════════════════════════╝ -->
+<section class="cs-sec" id="results">
   <div class="wrap">
-    <div class="sec-eyebrow fade-up">What We Do</div>
-    <h2 class="sec-title fade-up">Cold Email, LinkedIn & Paid Ads.<br>One Unified System.</h2>
-    <p class="sec-sub fade-up">Content warms the market. Outbound and paid ads close it. By the time a prospect gets your email, they've already seen your name on LinkedIn and in their feed, and that changes everything.</p>
+    <span class="eyebrow fade-up">Client Outcomes</span>
+    <h2 class="h2 fade-up">
+      <span class="serif">What 90 Days of</span><br>
+      <span class="serif-i">Growth Architecture Looks Like</span>
+    </h2>
 
-    <!-- Dual-channel callout -->
-    <div class="dual-callout fade-up">
-      <div class="dc-item">
-        <div class="dc-icon">✉️</div>
-        <h4>Cold Email</h4>
-        <p>AI-personalized sequences that land in primary inboxes and get replies at 2–3× industry rates</p>
-      </div>
-      <div class="dc-arrow">+</div>
-      <div class="dc-item">
-        <div class="dc-icon">📢</div>
-        <h4>LinkedIn Content</h4>
-        <p>30 posts/month in your voice build authority and keep you top-of-mind with your ICP</p>
-      </div>
-      <div class="dc-arrow">+</div>
-      <div class="dc-item">
-        <div class="dc-icon">🤝</div>
-        <h4>LinkedIn Outbound</h4>
-        <p>Targeted connection campaigns and warm DM sequences to your ideal buyers</p>
-      </div>
-      <div class="dc-arrow">+</div>
-      <div class="dc-item">
-        <div class="dc-icon">🎯</div>
-        <h4>Meta & Google Ads</h4>
-        <p>Paid lead gen campaigns on Meta and Google that put your offer in front of your ICP at scale</p>
-      </div>
-    </div>
-
-    <div class="svc-grid">
-      <div class="svc-card fade-up">
-        <div class="svc-tag">Cold Email</div>
-        <div class="svc-ico">✉️</div>
-        <h3>Cold Email Outbound</h3>
-        <p>AI-powered sequences built to land in primary inboxes and get replies from your ideal buyers.</p>
-        <ul class="svc-list">
-          <li>Custom domain & inbox setup</li>
-          <li>AI-personalized at scale</li>
-          <li>Proprietary sequencer, 2–3× reply rates</li>
-          <li>Deliverability monitoring & QA</li>
-        </ul>
-      </div>
-
-      <div class="svc-card featured fade-up">
-        <div class="svc-tag">LinkedIn</div>
-        <div class="svc-ico">📢</div>
-        <h3>LinkedIn Content & Authority</h3>
-        <p>We write 30 posts/month in your exact voice, positioning you as the expert your ICP follows, trusts, and buys from.</p>
-        <ul class="svc-list">
-          <li>Strategy + content calendar built for your ICP</li>
-          <li>Ghost-written in your voice; you approve, we post</li>
-          <li>Thought leadership that warms cold outreach</li>
-          <li>Profile optimization for inbound discovery</li>
-        </ul>
-      </div>
-
-      <div class="svc-card featured fade-up">
-        <div class="svc-tag">LinkedIn</div>
-        <div class="svc-ico">💼</div>
-        <h3>LinkedIn Outbound</h3>
-        <p>Signal-based outreach to your ICP on LinkedIn: warm connection campaigns and DM sequences that convert followers into calls.</p>
-        <ul class="svc-list">
-          <li>Targeted connection campaigns to ICP</li>
-          <li>Signal-based targeting (job changes, posts, activity)</li>
-          <li>Warm DM sequences with high response rates</li>
-          <li>Content + outbound running in parallel</li>
-        </ul>
-      </div>
-
-      <div class="svc-card fade-up">
-        <div class="svc-tag">Paid Ads</div>
-        <div class="svc-ico">🎯</div>
-        <h3>Meta & Google Ads</h3>
-        <p>Performance-driven paid lead gen on Meta and Googletargeting your ICP with offers that convert into qualified pipeline.</p>
-        <ul class="svc-list">
-          <li>Meta (Facebook & Instagram) lead campaigns</li>
-          <li>Google Search & Display targeting</li>
-          <li>Ad creative, copy & landing page setup</li>
-          <li>Retargeting audiences from organic traffic</li>
-        </ul>
-      </div>
-
-      <div class="svc-card fade-up">
-        <div class="svc-tag">AI-Powered</div>
-        <div class="svc-ico">🤖</div>
-        <h3>AI Enrichment & Targeting</h3>
-        <p>Proprietary tools that find, enrich, and qualify leads so every message lands with real context.</p>
-        <ul class="svc-list">
-          <li>Clay, Apollo & custom scrapers</li>
-          <li>Job change & intent signal triggers</li>
-          <li>Human-QA'd lead lists</li>
-          <li>CRM integration & pipeline tracking</li>
-        </ul>
-      </div>
-
-      <div class="svc-card fade-up">
-        <div class="svc-tag">Infrastructure</div>
-        <div class="svc-ico">🏗️</div>
-        <h3>Outbound Infrastructure</h3>
-        <p>The technical foundation most agencies skip, built to scale without getting burned or flagged.</p>
-        <ul class="svc-list">
-          <li>Domain portfolio & inbox rotation</li>
-          <li>Inbox warming protocols</li>
-          <li>Multi-channel sequencing</li>
-          <li>Automated lead routing</li>
-        </ul>
-      </div>
-
-      <div class="svc-card fade-up">
-        <div class="svc-tag">Automation</div>
-        <div class="svc-ico">📊</div>
-        <h3>Pipeline Automation</h3>
-        <p>Automate follow-up, tracking, and handoff so qualified leads flow directly into your calendar.</p>
-        <ul class="svc-list">
-          <li>Make.com & n8n workflows</li>
-          <li>CRM + calendar integration</li>
-          <li>Auto follow-up sequences</li>
-          <li>Weekly reporting & analytics</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     CASE STUDIES
-════════════════════════════════════════════════════════════ -->
-<section class="cs-sec" id="case-studies">
-  <div class="wrap">
-    <div class="sec-eyebrow fade-up">Client Results</div>
-    <h2 class="sec-title fade-up">Real Clients.<br>Real Pipeline.</h2>
-    <p class="sec-sub fade-up">From construction to maritime recruiting to SaaS, here's what happens when you plug in the Futurr system.</p>
-
-    <div class="cs-grid">
-      <div class="cs-card fade-up">
-        <span class="cs-tag">Construction Documentation</span>
-        <h3>C-Level CDs: 200+ Calls in 12 Months</h3>
-        <p>Specialized construction documentation firm needed to reach architects at scale. We built a full outbound engine with targeted, research-backed messaging that drove consistent meetings month over month.</p>
+    <!-- Case Study 1 -->
+    <div class="cs-item fade-up">
+      <div class="cs-quote-col">
+        <span class="cs-quote-mark">&ldquo;</span>
+        <p class="cs-quote">200+ Qualified Sales Calls in One Quarter</p>
+        <p class="cs-client"><strong>C-Level CDs</strong>, Construction Documentation</p>
         <div class="cs-metrics">
-          <div class="cs-metric"><div class="cs-mval">23</div><div class="cs-mlbl">New Clients in 4 months</div></div>
-          <div class="cs-metric"><div class="cs-mval">7.6%</div><div class="cs-mlbl">Reply Rate</div></div>
-          <div class="cs-metric"><div class="cs-mval">200+</div><div class="cs-mlbl">Qualified Sales Calls</div></div>
-          <div class="cs-metric"><div class="cs-mval">$408K</div><div class="cs-mlbl">Pipeline Generated</div></div>
+          <div class="cs-metric-item"><div class="cs-metric-val">23</div><div class="cs-metric-lbl">New Clients in 4 months</div></div>
+          <div class="cs-metric-item"><div class="cs-metric-val">7.6%</div><div class="cs-metric-lbl">Reply Rate</div></div>
+          <div class="cs-metric-item"><div class="cs-metric-val">$408K</div><div class="cs-metric-lbl">Pipeline Generated</div></div>
         </div>
-        <div class="cs-video">
-          <div style="position:relative;padding-top:56.25%;">
+      </div>
+      <div class="cs-media-col">
+        <div class="cs-video-wrap">
+          <div class="cs-video-inner">
             <iframe src="https://fast.wistia.net/embed/iframe/iej2ma30au?videoFoam=true"
-              title="C Level CDs Case Study" allowtransparency="true" frameborder="0" scrolling="no"
-              allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;"></iframe>
+              title="C Level CDs" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
           </div>
         </div>
+        <ul class="cs-bullets">
+          <li>Before: no systematic outbound, relied on referrals and word-of-mouth</li>
+          <li>After: 200+ qualified meetings with architects across 4 months</li>
+          <li>23 new clients closed from a single outbound engine</li>
+        </ul>
       </div>
+    </div>
 
-      <div class="cs-card fade-up">
-        <span class="cs-tag">Maritime Recruiting</span>
-        <h3>Marnect: 2 Deals Closed in First 30 Days</h3>
-        <p>Niche maritime recruiting agency in a hard-to-reach vertical. We identified the right audience, built tailored sequences, and delivered closed deals within weeks of launch.</p>
+    <!-- Case Study 2 (reversed) -->
+    <div class="cs-item reverse fade-up">
+      <div class="cs-quote-col">
+        <span class="cs-quote-mark">&ldquo;</span>
+        <p class="cs-quote">2 Deals Closed and $620K Pipeline in 30 Days</p>
+        <p class="cs-client"><strong>Marnect</strong>, Maritime Recruiting</p>
         <div class="cs-metrics">
-          <div class="cs-metric"><div class="cs-mval">15</div><div class="cs-mlbl">Qualified Appointments</div></div>
-          <div class="cs-metric"><div class="cs-mval">7.2%</div><div class="cs-mlbl">Reply Rate</div></div>
-          <div class="cs-metric"><div class="cs-mval">2</div><div class="cs-mlbl">Deals Closed in 30 Days</div></div>
-          <div class="cs-metric"><div class="cs-mval">$620K</div><div class="cs-mlbl">Pipeline Generated</div></div>
+          <div class="cs-metric-item"><div class="cs-metric-val">15</div><div class="cs-metric-lbl">Qualified Appointments</div></div>
+          <div class="cs-metric-item"><div class="cs-metric-val">7.2%</div><div class="cs-metric-lbl">Reply Rate</div></div>
+          <div class="cs-metric-item"><div class="cs-metric-val">$620K</div><div class="cs-metric-lbl">Pipeline in 30 Days</div></div>
         </div>
-        <div class="cs-video">
-          <div style="position:relative;padding-top:56.25%;">
+      </div>
+      <div class="cs-media-col">
+        <div class="cs-video-wrap">
+          <div class="cs-video-inner">
             <iframe src="https://fast.wistia.net/embed/iframe/4j0cstf1lh?videoFoam=true"
-              title="Marnect Case Study" allowtransparency="true" frameborder="0" scrolling="no"
-              allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;"></iframe>
+              title="Marnect" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
           </div>
         </div>
+        <ul class="cs-bullets">
+          <li>Before: no existing pipeline in a niche maritime vertical</li>
+          <li>After: 2 deals closed and $620K pipeline in the first 30 days</li>
+          <li>"We're going to need to pause. Our pipeline is full."</li>
+        </ul>
       </div>
+    </div>
 
-      <div class="cs-card fade-up">
-        <span class="cs-tag">Tax Services</span>
-        <h3>Universal Tax Professionals: 155 Appointments</h3>
-        <p>Tax firm needed a consistent, predictable flow of qualified prospects. We launched a multi-channel outbound system that generated steady results month over month.</p>
+    <!-- Case Study 3 -->
+    <div class="cs-item fade-up">
+      <div class="cs-quote-col">
+        <span class="cs-quote-mark">&ldquo;</span>
+        <p class="cs-quote">155 Appointments Booked Consistently Month Over Month</p>
+        <p class="cs-client"><strong>Universal Tax Professionals</strong>, Tax Services</p>
         <div class="cs-metrics">
-          <div class="cs-metric"><div class="cs-mval">155</div><div class="cs-mlbl">Appointments Booked</div></div>
-          <div class="cs-metric"><div class="cs-mval">15</div><div class="cs-mlbl">Leads in First 30 Days</div></div>
-          <div class="cs-metric"><div class="cs-mval">14</div><div class="cs-mlbl">Days to First Results</div></div>
-          <div class="cs-metric"><div class="cs-mval">Top 3%</div><div class="cs-mlbl">Reply Rate in Sector</div></div>
+          <div class="cs-metric-item"><div class="cs-metric-val">155</div><div class="cs-metric-lbl">Appointments Booked</div></div>
+          <div class="cs-metric-item"><div class="cs-metric-val">14</div><div class="cs-metric-lbl">Days to First Results</div></div>
+          <div class="cs-metric-item"><div class="cs-metric-val">Top 3%</div><div class="cs-metric-lbl">Reply Rate in Sector</div></div>
         </div>
-        <div class="cs-video">
-          <div style="position:relative;padding-top:56.25%;">
+      </div>
+      <div class="cs-media-col">
+        <div class="cs-video-wrap">
+          <div class="cs-video-inner">
             <iframe src="https://fast.wistia.net/embed/iframe/gf2vb4egsg?videoFoam=true"
-              title="UTP Case Study" allowtransparency="true" frameborder="0" scrolling="no"
-              allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;"></iframe>
+              title="UTP" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
           </div>
         </div>
+        <ul class="cs-bullets">
+          <li>Before: inconsistent referral-dependent lead flow</li>
+          <li>After: 155 appointments, predictable results every month</li>
+          <li>Top 3% reply rate in sector, live within 14 days</li>
+        </ul>
       </div>
+    </div>
 
-      <div class="cs-card fade-up">
-        <span class="cs-tag">Creative Agency</span>
-        <h3>Creative Agency: $12K Retainer in 30 Days</h3>
-        <p>Boutique creative agency with no predictable pipeline. We delivered 11 qualified meetings in the first monthand they closed a $12K monthly retainer within 30 days.</p>
+    <!-- Case Study 4 (reversed) -->
+    <div class="cs-item reverse fade-up">
+      <div class="cs-quote-col">
+        <span class="cs-quote-mark">&ldquo;</span>
+        <p class="cs-quote">$12K Monthly Retainer Closed in 30 Days from Zero</p>
+        <p class="cs-client"><strong>Smart Object</strong>, Creative Agency</p>
         <div class="cs-metrics">
-          <div class="cs-metric"><div class="cs-mval">11</div><div class="cs-mlbl">Meetings, Month One</div></div>
-          <div class="cs-metric"><div class="cs-mval">$12K</div><div class="cs-mlbl">Retainer Closed</div></div>
-          <div class="cs-metric"><div class="cs-mval">30</div><div class="cs-mlbl">Days to First Close</div></div>
-          <div class="cs-metric"><div class="cs-mval">$0→MRR</div><div class="cs-mlbl">Pipeline from Scratch</div></div>
+          <div class="cs-metric-item"><div class="cs-metric-val">11</div><div class="cs-metric-lbl">Meetings, Month One</div></div>
+          <div class="cs-metric-item"><div class="cs-metric-val">$12K</div><div class="cs-metric-lbl">Retainer Closed</div></div>
+          <div class="cs-metric-item"><div class="cs-metric-val">30</div><div class="cs-metric-lbl">Days to First Close</div></div>
         </div>
-        <div class="cs-video">
-          <div style="position:relative;padding-top:56.25%;">
+      </div>
+      <div class="cs-media-col">
+        <div class="cs-video-wrap">
+          <div class="cs-video-inner">
             <iframe src="https://fast.wistia.net/embed/iframe/tgg77qu7cb?videoFoam=true"
-              title="Smart Object Case Study" allowtransparency="true" frameborder="0" scrolling="no"
-              allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:inherit;"></iframe>
+              title="Smart Object" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
           </div>
+        </div>
+        <ul class="cs-bullets">
+          <li>Before: no predictable pipeline, fully referral-dependent</li>
+          <li>After: 11 qualified meetings and a $12K retainer in 30 days</li>
+          <li>"Finally an agency that delivers." Sasha Shemirani, CEO</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗
+     ║  PROCESS TIMELINE           ║
+     ╚══════════════════════════════╝ -->
+<section class="proc-sec" id="process">
+  <div class="wrap">
+    <span class="eyebrow fade-up">Your Deployment Timeline</span>
+    <h2 class="h2 fade-up">
+      <span class="serif">Your Growth Architecture</span><br>
+      <span class="serif-i">Deployment Timeline</span>
+    </h2>
+
+    <div class="proc-item fade-up">
+      <div class="proc-label">Week 1 &amp; 2 <span>&rarr; Research &amp; Infrastructure</span></div>
+      <div class="proc-content">
+        <h3>We dig deep before we build anything.</h3>
+        <p>Your ICP gets mapped, your offer gets sharpened, and your sending infrastructure gets built from scratch: aged domains, warmed inboxes, verified lists. Your primary domain is never touched.</p>
+        <ul class="proc-checklist">
+          <li>ICP research and buyer psychology analysis</li>
+          <li>Dedicated sending domains and inbox setup</li>
+          <li>Inbox warming and deliverability configuration</li>
+          <li>Verified lead list build</li>
+        </ul>
+      </div>
+      <div class="proc-card">
+        <div class="proc-card-label">Day 7</div>
+        <div class="proc-card-title">Infrastructure Ready.</div>
+        <div class="proc-card-sub">Hypothesis formed.</div>
+        <div class="proc-card-dot">Outreach configured, ready to test</div>
+      </div>
+    </div>
+
+    <div class="proc-item fade-up">
+      <div class="proc-label">Week 3 &amp; 4 <span>&rarr; Hypothesis Live</span></div>
+      <div class="proc-content">
+        <h3>Your hypothesis meets the market.</h3>
+        <p>First sequences hit the market. Real reply data starts flowing back. Your messaging gets tested against actual buyer response, not assumptions.</p>
+        <ul class="proc-checklist">
+          <li>Sequences written, QA'd, and launched</li>
+          <li>Reply handling and qualification underway</li>
+          <li>Early data feeding back into the system</li>
+        </ul>
+      </div>
+      <div class="proc-card-empty"></div>
+    </div>
+
+    <div class="proc-item fade-up">
+      <div class="proc-label">Month 2 <span>&rarr; Compound &amp; Scale</span></div>
+      <div class="proc-content">
+        <h3>The system starts to compound.</h3>
+        <p>Winning angles scale. Weak ones get cut. Volume grows on proven copy, and the cost of every booked meeting starts to fall. The intelligence layer refines continuously.</p>
+        <ul class="proc-checklist">
+          <li>Top-performing sequences scaled</li>
+          <li>Underperforming angles replaced by data</li>
+          <li>Additional targeting layers added</li>
+        </ul>
+      </div>
+      <div class="proc-card-empty"></div>
+    </div>
+
+    <div class="proc-item fade-up">
+      <div class="proc-label">Month 3 <span>&rarr; Systematize &amp; Transfer</span></div>
+      <div class="proc-content">
+        <h3>Wins become permanent infrastructure.</h3>
+        <p>What works gets locked in as repeatable infrastructure. The engine runs on proven angles, proven lists, and proven sequences, and keeps sharpening.</p>
+        <ul class="proc-checklist">
+          <li>Winning frameworks documented and locked in</li>
+          <li>Full performance review: pipeline, cost per meeting</li>
+          <li>System continues running, compounding every cycle</li>
+        </ul>
+      </div>
+      <div class="proc-card-empty"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗
+     ║  RESULTS (dark)             ║
+     ╚══════════════════════════════╝ -->
+<section class="results-sec">
+  <div class="wrap">
+    <span class="eyebrow fade-up">Select Results</span>
+    <h2 class="h2 fade-up">
+      <span class="serif" style="color:#fff;">Pipeline Generated Across</span><br>
+      <span class="serif-i" style="color:rgba(255,255,255,0.65);">90-Day Deployments</span>
+    </h2>
+    <div class="results-grid">
+      <div class="result-card fade-up">
+        <div class="result-card-top">
+          <span class="result-tag">90 Days</span>
+          <div style="text-align:right;"><div class="result-amount">$408K</div><div class="result-amount-lbl">pipeline revenue</div></div>
+        </div>
+        <div class="result-name">C-Level CDs</div>
+        <div class="result-stats">
+          <div class="result-stat"><div class="result-stat-val">200+</div><div class="result-stat-lbl">Qualified calls</div></div>
+          <div class="result-stat"><div class="result-stat-val">7.6%</div><div class="result-stat-lbl">Reply rate</div></div>
+          <div class="result-stat"><div class="result-stat-val">23</div><div class="result-stat-lbl">New clients</div></div>
+        </div>
+      </div>
+      <div class="result-card fade-up">
+        <div class="result-card-top">
+          <span class="result-tag">30 Days</span>
+          <div style="text-align:right;"><div class="result-amount">$620K</div><div class="result-amount-lbl">pipeline revenue</div></div>
+        </div>
+        <div class="result-name">Marnect</div>
+        <div class="result-stats">
+          <div class="result-stat"><div class="result-stat-val">15</div><div class="result-stat-lbl">Appointments</div></div>
+          <div class="result-stat"><div class="result-stat-val">7.2%</div><div class="result-stat-lbl">Reply rate</div></div>
+          <div class="result-stat"><div class="result-stat-val">2</div><div class="result-stat-lbl">Deals closed</div></div>
+        </div>
+      </div>
+      <div class="result-card fade-up">
+        <div class="result-card-top">
+          <span class="result-tag">90 Days</span>
+          <div style="text-align:right;"><div class="result-amount">155</div><div class="result-amount-lbl">appointments booked</div></div>
+        </div>
+        <div class="result-name">Universal Tax Professionals</div>
+        <div class="result-stats">
+          <div class="result-stat"><div class="result-stat-val">14</div><div class="result-stat-lbl">Days to first lead</div></div>
+          <div class="result-stat"><div class="result-stat-val">Top 3%</div><div class="result-stat-lbl">Reply rate</div></div>
+          <div class="result-stat"><div class="result-stat-val">MoM</div><div class="result-stat-lbl">Consistent growth</div></div>
+        </div>
+      </div>
+      <div class="result-card fade-up">
+        <div class="result-card-top">
+          <span class="result-tag">30 Days</span>
+          <div style="text-align:right;"><div class="result-amount">$12K</div><div class="result-amount-lbl">retainer closed</div></div>
+        </div>
+        <div class="result-name">Smart Object</div>
+        <div class="result-stats">
+          <div class="result-stat"><div class="result-stat-val">11</div><div class="result-stat-lbl">Meetings booked</div></div>
+          <div class="result-stat"><div class="result-stat-val">30</div><div class="result-stat-lbl">Days to close</div></div>
+          <div class="result-stat"><div class="result-stat-val">$0→MRR</div><div class="result-stat-lbl">From scratch</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     PROCESS
-════════════════════════════════════════════════════════════ -->
-<section id="process">
+<!-- ╔══════════════════════════════╗
+     ║  TESTIMONIALS               ║
+     ╚══════════════════════════════╝ -->
+<section class="testi-sec">
   <div class="wrap">
-    <div class="sec-eyebrow fade-up">How It Works</div>
-    <h2 class="sec-title fade-up">From Zero to Booked<br>Meetings in 14 Days</h2>
-    <p class="sec-sub fade-up">A proven 6-step system that gets your outbound engine live fastwithout the chaos.</p>
-
-    <div class="proc-grid">
-      <div class="proc-step fade-up">
-        <span class="step-num">Step 01</span>
-        <h4>Deep-Dive Audit</h4>
-        <p>We review your offer, ICP, LinkedIn presence, competitors, and positioning. We find what resonates before writing a single word.</p>
-      </div>
-      <div class="proc-step fade-up">
-        <span class="step-num">Step 02</span>
-        <h4>Infrastructure & Profile Build</h4>
-        <p>Email domain portfolio, inbox warming, sending infrastructure, plus LinkedIn profile optimization for inbound discovery.</p>
-      </div>
-      <div class="proc-step fade-up">
-        <span class="step-num">Step 03</span>
-        <h4>Lead List & Enrichment</h4>
-        <p>We use Clay, Apollo, and custom scrapers to build hyper-targeted lists enriched with intent signals and buying context.</p>
-      </div>
-      <div class="proc-step fade-up">
-        <span class="step-num">Step 04</span>
-        <h4>Dual-Channel Launch</h4>
-        <p>AI-personalized cold email sequences + LinkedIn outreach and content go live simultaneously. Your name shows up everywhere your ICP looks.</p>
-      </div>
-      <div class="proc-step fade-up">
-        <span class="step-num">Step 05</span>
-        <h4>Response Handling</h4>
-        <p>We manage replies, handle objections, and route interested prospects directly to your calendarzero lift on your end.</p>
-      </div>
-      <div class="proc-step fade-up">
-        <span class="step-num">Step 06</span>
-        <h4>Optimize & Scale</h4>
-        <p>Weekly reporting, A/B testing, and continuous optimization across both channels. What works gets doubled. What doesn't gets cut.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     WHY FUTURR
-════════════════════════════════════════════════════════════ -->
-<section class="why-sec">
-  <div class="wrap">
-    <div class="sec-eyebrow fade-up">Why Futurr</div>
-    <h2 class="sec-title fade-up">Not Another Agency.<br>A Working System.</h2>
-
-    <div class="why-layout">
-      <div class="why-list">
-        <div class="why-item fade-up">
-          <div class="why-check">✓</div>
-          <div>
-            <h4>Proprietary Sequencer Technology</h4>
-            <p>Our custom-built email sequencer and AI enrichment tools deliver 2–3× better reply rates than any off-the-shelf tool.</p>
-          </div>
-        </div>
-        <div class="why-item fade-up">
-          <div class="why-check">✓</div>
-          <div>
-            <h4>LinkedIn Content That Pre-Warms Your Market</h4>
-            <p>30 posts/month in your voice means prospects already know your name when they get your outreachdramatically increasing reply and close rates.</p>
-          </div>
-        </div>
-        <div class="why-item fade-up">
-          <div class="why-check">✓</div>
-          <div>
-            <h4>Live in Days, Leads in 14</h4>
-            <p>No 6-month onboarding. We build fast and launch fast. Qualified leads hit your calendar within 14 days.</p>
-          </div>
-        </div>
-        <div class="why-item fade-up">
-          <div class="why-check">✓</div>
-          <div>
-            <h4>Human QA on Every Campaign</h4>
-            <p>AI handles scale. Humans handle quality. Every message gets reviewed before it sends. Your brand is always protected.</p>
-          </div>
-        </div>
-        <div class="why-item fade-up">
-          <div class="why-check">✓</div>
-          <div>
-            <h4>No SDR Hiring. No Micromanaging.</h4>
-            <p>We own targeting, messaging, tech, QA, and optimization end-to-end. You only show up for discovery calls.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="why-panel fade-up">
-        <div class="big-stat">$3M+</div>
-        <p>In pipeline generated across 50+ B2B clients, from cold start to consistent qualified meetings.</p>
-        <div class="divider"></div>
-        <div class="stack-label">Tech Stack We Use</div>
-        <div class="chips">
-          <span class="chip">Clay</span>
-          <span class="chip">Apollo</span>
-          <span class="chip">Instantly</span>
-          <span class="chip">Smartlead</span>
-          <span class="chip">Make.com</span>
-          <span class="chip">n8n</span>
-          <span class="chip">GPT-4</span>
-          <span class="chip">Lemlist</span>
-          <span class="chip">Airtable</span>
-          <span class="chip">HubSpot</span>
-          <span class="chip">GoHighLevel</span>
-          <span class="chip">LinkedIn</span>
-          <span class="chip">Email Bison</span>
-          <span class="chip">ScaledMail</span>
-          <span class="chip">Cursor</span>
-          <span class="chip">Claude Code</span>
-          <span class="chip">Replit</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     TESTIMONIALS
-════════════════════════════════════════════════════════════ -->
-<section>
-  <div class="wrap">
-    <div class="sec-eyebrow fade-up">What Clients Say</div>
-    <h2 class="sec-title fade-up">Words From the<br>People We've Built For</h2>
-    <p class="sec-sub fade-up">Founders across B2B sectors who needed consistent, qualified pipeline, and got it.</p>
-
+    <span class="eyebrow fade-up">Testimonials</span>
+    <h2 class="h2 fade-up">
+      <span class="serif">What do our partners think</span><br>
+      <span class="serif-i">about working with us?</span>
+    </h2>
     <div class="testi-grid">
       <div class="testi-card fade-up">
-        <div class="stars">★★★★★</div>
-        <p class="testi-text">"Okay, we're going to need to pause for a bit, our pipeline is full."</p>
         <div class="testi-author">
           <div class="testi-avatar">
             <img src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/67e958c6feea2102b0ca506c_images.jpeg" alt="Ryan Frost" />
@@ -1382,11 +884,9 @@
             <div class="testi-role">Owner, Marnect</div>
           </div>
         </div>
+        <p class="testi-text">"Okay, we're going to need to pause for a bit, our pipeline is full. We've had more qualified conversations in 30 days than the previous six months combined."</p>
       </div>
-
       <div class="testi-card fade-up">
-        <div class="stars">★★★★★</div>
-        <p class="testi-text">"Game changer for us, TOTAL game changer!"</p>
         <div class="testi-author">
           <div class="testi-avatar">
             <img src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/67e993abf801b7bf3d0e7c2b_pfiore.jpeg" alt="Paul Fiore" />
@@ -1396,11 +896,9 @@
             <div class="testi-role">Principal, C-Level CDs</div>
           </div>
         </div>
+        <p class="testi-text">"Game changer for us, TOTAL game changer! We were invisible to architects before this. Now we have a consistent, predictable flow of the right people reaching back out."</p>
       </div>
-
       <div class="testi-card fade-up">
-        <div class="stars">★★★★★</div>
-        <p class="testi-text">"Good meetings, we've definitely closed some really terrific clients from your outreach."</p>
         <div class="testi-author">
           <div class="testi-avatar">
             <img src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/67e99231324c102df5dbfb05_jkatz.jpeg" alt="Josh Katz" />
@@ -1410,13 +908,9 @@
             <div class="testi-role">Founder, Universal Tax Professionals</div>
           </div>
         </div>
+        <p class="testi-text">"Good meetings, we've definitely closed some really terrific clients from your outreach. The quality of who's landing on my calendar is exactly who we wanted to reach."</p>
       </div>
-    </div>
-
-    <div class="testi-grid-solo">
       <div class="testi-card fade-up">
-        <div class="stars">★★★★★</div>
-        <p class="testi-text">"I was skeptical at first. We'd tried agencies before and got nothing. Within 30 days we had 11 real meetings and closed a $12K retainer. Finally, an agency that delivers."</p>
         <div class="testi-author">
           <div class="testi-avatar">
             <img src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/67e958c6feea2102b0ca5069_Sasha_SO_Bio_-_Sasha_Shemirani.png" alt="Sasha Shemirani" />
@@ -1426,160 +920,113 @@
             <div class="testi-role">CEO, Smart Object</div>
           </div>
         </div>
+        <p class="testi-text">"I was skeptical at first. We'd tried agencies before and got nothing. Within 30 days we had 11 real meetings and closed a $12K retainer. Finally, an agency that delivers."</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     ABOUT ME
-════════════════════════════════════════════════════════════ -->
-<section style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);" id="about">
-  <div class="wrap">
-    <div class="about-grid">
+<!-- ╔══════════════════════════════╗
+     ║  FAQ                        ║
+     ╚══════════════════════════════╝ -->
+<section class="faq-sec" id="faq">
+  <div class="wrap-md">
+    <div class="faq-header fade-up">
+      <span class="eyebrow">FAQ</span>
+      <h2 class="h2 serif">Frequently Asked Questions</h2>
+      <p>Get detailed answers on our approach, pricing, and the strategic value we deliver. Our commitment to transparency ensures you have the insights needed for informed decisions.</p>
+    </div>
 
-      <!-- Photo -->
-      <div class="about-photo-wrap fade-up">
-        <img src="about-photo.png" alt="Magomed Dunkaev, Founder, Futurr Digital" />
-        <div class="about-photo-accent">
-          <div class="apa-val">3+ yrs</div>
-          <div class="apa-lbl">Building B2B Systems</div>
-        </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>We've tried outsourcing outreach before and it didn't produce.</span>
+        <div class="faq-icon">+</div>
       </div>
-
-      <!-- Content -->
-      <div class="about-content fade-up">
-        <div class="sec-eyebrow">About</div>
-        <h2 class="sec-title">Hey, I'm Magomed.<br>I Build Systems.</h2>
-
-        <p>Founder of Futurr Digital. I help B2B founders get inbound clients through <strong>LinkedIn content + outbound + Meta & Google Ads</strong>, a system I've spent 3+ years refining for my own agency before bringing it to 50+ clients.</p>
-
-        <p>I started by building cold email and LinkedIn systems for my own business using Clay, Make, Apollo, and custom-built tech. Those same workflows let me grow without hiring extra staff. Now I install them for B2B founders across every vertical.</p>
-
-        <div class="about-stats">
-          <div>
-            <div class="astat-val">$3M+</div>
-            <div class="astat-lbl">Pipeline generated</div>
-          </div>
-          <div>
-            <div class="astat-val">500+</div>
-            <div class="astat-lbl">Meetings booked</div>
-          </div>
-          <div>
-            <div class="astat-val">50+</div>
-            <div class="astat-lbl">Clients served</div>
-          </div>
-        </div>
-
-        <div class="about-btns">
-          <a href="https://www.linkedin.com/in/mkdunkaev" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
-            Connect on LinkedIn →
-          </a>
-          <a href="https://www.upwork.com/freelancers/magdunkaev?mp_source=share" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
-            View on Upwork →
-          </a>
-        </div>
+      <p class="faq-a">Usually because they ran spray-and-pray on bad infrastructure with no feedback loop. We invert all three: researched targeting, dedicated infrastructure, and a system that sharpens every week instead of repeating the same misses.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>I don't want to compromise our firm's reputation in this market.</span>
+        <div class="faq-icon">+</div>
       </div>
-
+      <p class="faq-a">We never send from your primary domain. Every campaign runs on dedicated, aged infrastructure with warmed inboxes and verified lists, monitored continuously. Your brand is never at risk.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>How is this different from the last vendor we engaged?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <p class="faq-a">Most vendors send volume and hope. We lead with intelligence, protect your domain on separate infrastructure, put a human on every campaign before it sends, and compound results over time rather than resetting each month.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>We're a relationship business. Our mandates come from referrals and trust built over years.</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <p class="faq-a">If your buyers are reachable by email and one client is worth real money, yes. Outbound becomes the predictable layer underneath your referrals, so you are not at the mercy of who happens to introduce you this month.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>I need to run this by my partners.</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <p class="faq-a">Completely understood. Book the strategy call and bring them along. We'll map your current setup, show you exactly what we'd build, and you'll have everything you need to make the decision together.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>What if the conversations aren't qualified?</span>
+        <div class="faq-icon">+</div>
+      </div>
+      <p class="faq-a">We handle reply classification and qualification before anything reaches your calendar. You only join calls with prospects who match your ICP and are actively looking for a solution.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     BOOK / CTA
-════════════════════════════════════════════════════════════ -->
-<section class="book-sec" id="book">
-  <div class="wrap">
-    <div class="book-box fade-up">
-      <div class="sec-eyebrow" style="justify-content:center;">Get Started</div>
-      <h2>Ready to Build Your<br>Outbound, LinkedIn & Ads Engine?</h2>
-      <p>Book a free 30-minute intro call. We'll audit your current approach and map out exactly what a working outbound + LinkedIn + paid ads system looks like for your business.</p>
 
-      <a href="https://cal.com/futurrdigital/intro-call" class="btn btn-accent" style="display:inline-flex;" target="_blank" rel="noopener">
-        Book Your Free Intro Call <span class="btn-arrow">→</span>
-      </a>
-
-      <div class="cta-trust">
-        <span>✓ Free 30-min call</span>
-        <span>✓ No commitment</span>
-        <span>✓ Leads as early as 14 days</span>
-      </div>
-
-      <!-- Cal.com inline embed -->
-      <div class="cal-embed-wrap">
-        <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-intro-call"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════════════════════════ -->
+<!-- ╔══════════════════════════════╗
+     ║  FOOTER                     ║
+     ╚══════════════════════════════╝ -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">
-      <!-- TODO: Replace with your logo file -->
-      <img
-        src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/688b831685c43f264c24607a_Logo_Black.svg"
-        alt="Futurr Digital"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-      />
+    <div class="footer-logo-wrap">
+      <img src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/688b831685c43f264c24607a_Logo_Black.svg" alt="Futurr Digital"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
       <span class="footer-logo-text" style="display:none;">Futurr<em>.</em></span>
     </div>
-
-    <nav class="footer-nav" aria-label="Footer navigation">
-      <a href="https://www.linkedin.com/in/mkdunkaev" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.youtube.com/@magdunkaev" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://www.upwork.com/freelancers/magdunkaev?mp_source=share" target="_blank" rel="noopener">Upwork</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms.html">Terms</a>
-    </nav>
-
-    <p class="footer-copy">© 2026 Futurr Digital. All rights reserved.</p>
+    <p class="footer-tagline">Growth architecture engineered for predictable revenue</p>
+    <div class="footer-socials">
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/mkdunkaev" target="_blank" rel="noopener" class="footer-social-btn" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@magdunkaev" target="_blank" rel="noopener" class="footer-social-btn" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <!-- Upwork -->
+      <a href="https://www.upwork.com/freelancers/magdunkaev?mp_source=share" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Upwork">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.543-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+      </a>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">&copy; 2026 Futurr Digital. All rights reserved.</p>
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════════
-     JS
-════════════════════════════════════════════════════════════ -->
 <script>
-  /* ── Mobile menu ── */
   function toggleMenu() {
     document.getElementById('mobileNav').classList.toggle('open');
   }
-
-  /* ── Fade-in on scroll ── */
+  function toggleFaq(el) {
+    el.parentElement.classList.toggle('open');
+  }
   const faders = document.querySelectorAll('.fade-up');
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.10 });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
   faders.forEach(el => io.observe(el));
-
-  /* ── Stagger sibling cards ── */
-  document.querySelectorAll(
-    '.prob-grid, .svc-grid, .cs-grid, .proc-grid, .testi-grid, .stats-inner'
-  ).forEach(grid => {
-    grid.querySelectorAll('.fade-up').forEach((card, i) => {
-      card.style.transitionDelay = (i * 0.07) + 's';
-    });
-  });
 </script>
 
-<!-- Cal inline embed code begins -->
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-  Cal("init", "intro-call", {origin:"https://app.cal.com"});
-  Cal.ns["intro-call"]("inline", {
-    elementOrSelector:"#my-cal-inline-intro-call",
-    config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
-    calLink: "futurrdigital/intro-call",
-  });
-  Cal.ns["intro-call"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#1C3D9C"},"dark":{"cal-brand":"#1C3D9C"}},"hideEventTypeDetails":false,"layout":"month_view"});
-</script>
-<!-- Cal inline embed code ends -->
 
 </body>
 </html>
