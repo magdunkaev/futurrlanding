@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Done-For-You Client Acquisition | Futurr Digital</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #ffffff;
+      --surface:     #f8f8f8;
+      --surface2:    #f0f0f0;
+      --border:      #e5e5e5;
+      --border2:     #d0d0d0;
+      --accent:      #1C3D9C;
+      --accent-text: #1C3D9C;
+      --accent-glow: rgba(28,61,156,0.07);
+      --accent-edge: rgba(28,61,156,0.20);
+      --text:        #0d0d0d;
+      --muted:       #6b6b6b;
+      --dim:         #a0a0a0;
+      --green:       #16a34a;
+      --red:         #dc2626;
+      --r:           14px;
+      --r-lg:        22px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── NAV ─── */
+    .nav {
+      padding: 0 40px; height: 64px;
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 32px; width: auto; }
+    .nav-logo-text { font-size: 19px; font-weight: 900; letter-spacing: -0.5px; }
+    .nav-logo-text em { font-style: normal; color: var(--accent-text); }
+
+    /* ─── WRAP ─── */
+    .wrap { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+    .wrap-wide { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 72px 20px 64px;
+      text-align: center;
+      background: var(--bg);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -200px; left: 50%;
+      transform: translateX(-50%); width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(28,61,156,.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent-text);
+      margin-bottom: 24px;
+    }
+    .eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--accent); border-radius: 2px; }
+    .eyebrow::after  { content: ''; width: 20px; height: 2px; background: var(--accent); border-radius: 2px; }
+
+    .hero h1 {
+      font-size: clamp(30px, 5.5vw, 54px);
+      font-weight: 900; letter-spacing: -2px; line-height: 1.07;
+      margin-bottom: 20px; position: relative;
+    }
+    .hero h1 em { font-style: normal; color: var(--accent-text); }
+
+    .hero-sub {
+      font-size: 18px; color: var(--muted); max-width: 580px;
+      margin: 0 auto 32px; line-height: 1.7;
+    }
+
+    .qualifier {
+      display: inline-block;
+      font-size: 13px; font-weight: 700; color: var(--red);
+      background: rgba(220,38,38,.07); border: 1px solid rgba(220,38,38,.2);
+      border-radius: 100px; padding: 8px 20px; margin-bottom: 36px;
+    }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--accent); color: #fff;
+      font-size: 16px; font-weight: 800; letter-spacing: -0.3px;
+      padding: 18px 40px; border-radius: 100px;
+      transition: opacity .2s, transform .15s;
+      border: none; cursor: pointer; font-family: inherit;
+    }
+    .cta-btn:hover { opacity: .88; transform: scale(1.02); }
+    .cta-btn .arrow { font-size: 18px; }
+
+    .below-cta {
+      margin-top: 14px; font-size: 12px; color: var(--dim);
+    }
+
+    /* ─── PROOF BAR ─── */
+    .proof-bar {
+      background: var(--accent); padding: 36px 20px;
+    }
+    .proof-grid {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+      text-align: center;
+    }
+    .proof-item { padding: 0 16px; border-right: 1px solid rgba(255,255,255,.18); }
+    .proof-item:last-child { border-right: none; }
+    .proof-val { font-size: 36px; font-weight: 900; letter-spacing: -1.5px; color: #fff; line-height: 1; }
+    .proof-lbl { font-size: 12px; color: rgba(255,255,255,.65); font-weight: 600; margin-top: 6px; }
+
+    /* ─── SECTION ─── */
+    .sec { padding: 72px 20px; }
+    .sec-alt { background: var(--surface); }
+    .sec-title {
+      font-size: clamp(24px, 3.5vw, 36px); font-weight: 900;
+      letter-spacing: -1px; line-height: 1.15; margin-bottom: 12px;
+    }
+    .sec-title em { font-style: normal; color: var(--accent-text); }
+    .sec-sub { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 40px; }
+
+    /* ─── WHAT YOU GET ─── */
+    .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .benefit-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 26px;
+    }
+    .benefit-icon { font-size: 22px; margin-bottom: 12px; }
+    .benefit-title { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+    .benefit-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ─── RESULTS ─── */
+    .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .result-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 28px;
+    }
+    .result-tag {
+      display: inline-block; font-size: 10px; font-weight: 800;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--accent-text); background: var(--accent-glow);
+      border: 1px solid var(--accent-edge);
+      border-radius: 100px; padding: 4px 12px; margin-bottom: 14px;
+    }
+    .result-title { font-size: 16px; font-weight: 800; margin-bottom: 8px; line-height: 1.3; }
+    .result-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
+    .result-metrics { display: flex; gap: 16px; flex-wrap: wrap; }
+    .result-metric {}
+    .result-mval { font-size: 22px; font-weight: 900; letter-spacing: -0.8px; color: var(--accent-text); }
+    .result-mlbl { font-size: 11px; color: var(--dim); font-weight: 500; margin-top: 1px; }
+
+    /* ─── TESTIMONIAL ─── */
+    .testi-card {
+      background: var(--accent-glow); border: 1px solid var(--accent-edge);
+      border-radius: var(--r-lg); padding: 36px 40px; text-align: center;
+    }
+    .stars { font-size: 20px; color: #f59e0b; letter-spacing: 3px; margin-bottom: 16px; }
+    .testi-text {
+      font-size: 19px; font-weight: 700; line-height: 1.55;
+      color: var(--text); letter-spacing: -0.3px; margin-bottom: 20px;
+    }
+    .testi-author { font-size: 13px; color: var(--muted); font-weight: 600; }
+
+    /* ─── NOT FOR ─── */
+    .qualifier-box {
+      background: rgba(220,38,38,.05); border: 1px solid rgba(220,38,38,.18);
+      border-radius: var(--r-lg); padding: 28px 32px; margin-bottom: 24px;
+    }
+    .qualifier-box h4 { font-size: 14px; font-weight: 800; color: var(--red); margin-bottom: 12px; }
+    .qualifier-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .qualifier-list li { font-size: 13px; color: var(--muted); display: flex; align-items: flex-start; gap: 8px; }
+    .qualifier-list li::before { content: '✕'; color: var(--red); font-weight: 900; font-size: 11px; margin-top: 2px; flex-shrink: 0; }
+
+    .for-box {
+      background: var(--accent-glow); border: 1px solid var(--accent-edge);
+      border-radius: var(--r-lg); padding: 28px 32px;
+    }
+    .for-box h4 { font-size: 14px; font-weight: 800; color: var(--accent-text); margin-bottom: 12px; }
+    .for-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .for-list li { font-size: 13px; color: var(--text); display: flex; align-items: flex-start; gap: 8px; }
+    .for-list li::before { content: '✓'; color: var(--green); font-weight: 900; font-size: 12px; margin-top: 1px; flex-shrink: 0; }
+
+    /* ─── FORM SECTION ─── */
+    .form-sec {
+      padding: 80px 20px 100px;
+      background: var(--surface);
+      text-align: center;
+    }
+    .form-sec h2 {
+      font-size: clamp(26px, 4vw, 42px); font-weight: 900;
+      letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 12px;
+    }
+    .form-sec h2 em { font-style: normal; color: var(--accent-text); }
+    .form-sec p { font-size: 16px; color: var(--muted); margin-bottom: 40px; line-height: 1.7; }
+
+    .form-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 40px;
+      max-width: 520px; margin: 0 auto; text-align: left;
+    }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px; letter-spacing: .04em; text-transform: uppercase; }
+    .field input, .field select {
+      width: 100%; padding: 14px 16px;
+      border: 1px solid var(--border2); border-radius: var(--r);
+      font-size: 15px; font-weight: 500; color: var(--text);
+      background: var(--bg); font-family: inherit; outline: none;
+      transition: border-color .2s;
+    }
+    .field input:focus, .field select:focus { border-color: var(--accent); }
+    .field input::placeholder { color: var(--dim); }
+
+    .form-submit {
+      width: 100%; padding: 18px;
+      background: var(--accent); color: #fff;
+      font-size: 16px; font-weight: 800; letter-spacing: -0.3px;
+      border: none; border-radius: 100px; cursor: pointer;
+      font-family: inherit; margin-top: 8px;
+      transition: opacity .2s, transform .15s;
+    }
+    .form-submit:hover { opacity: .88; transform: scale(1.01); }
+
+    .form-trust {
+      margin-top: 16px; font-size: 11px; color: var(--dim);
+      text-align: center; line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 28px 20px; text-align: center; }
+    footer p { font-size: 12px; color: var(--dim); }
+    footer a { color: var(--muted); text-decoration: underline; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      .nav { padding: 0 20px; }
+      .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .proof-item { border-right: none; }
+      .benefits-grid, .results-grid { grid-template-columns: 1fr; }
+      .testi-card { padding: 28px 24px; }
+      .form-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="https://cdn.prod.website-files.com/67e929c830d76b05050bfe5b/688b831685c43f264c24607a_Logo_Black.svg" alt="Futurr Digital"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+    <span class="nav-logo-text" style="display:none;">Futurr<em>.</em></span>
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Done-For-You Client Acquisition</div>
+    <h1>We'll Build a System That Books <em>Qualified Calls</em> With Your Ideal Clients Every Month.</h1>
+    <p class="hero-sub">Cold email + LinkedIn + Meta Ads — fully built and managed for you. No hiring. No guessing. Leads as early as 14 days.</p>
+    <div class="qualifier">Only for established B2B companies &amp; agency owners generating revenue.</div>
+    <br />
+    <a href="#apply" class="cta-btn">Get Pricing &amp; Details <span class="arrow">→</span></a>
+    <p class="below-cta">Free strategy call · No commitment · Takes 2 minutes</p>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-grid">
+    <div class="proof-item">
+      <div class="proof-val">$3M+</div>
+      <div class="proof-lbl">Pipeline Generated</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-val">50+</div>
+      <div class="proof-lbl">B2B Clients Served</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-val">14 Days</div>
+      <div class="proof-lbl">To First Leads</div>
+    </div>
+    <div class="proof-item">
+      <div class="proof-val">200+</div>
+      <div class="proof-lbl">Qualified Calls Booked</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT YOU GET -->
+<section class="sec">
+  <div class="wrap-wide">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="sec-title">Everything Built &amp; Managed <em>For You</em></div>
+      <p class="sec-sub" style="max-width:540px; margin: 0 auto;">We handle the full system. You show up to calls with interested prospects ready to buy.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">✉️</div>
+        <div class="benefit-title">Cold Email Campaigns</div>
+        <div class="benefit-desc">40,000–80,000 targeted emails per month to your ideal-fit prospects. Fully managed — copywriting, sending infrastructure, reply handling.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">💼</div>
+        <div class="benefit-title">LinkedIn Outbound</div>
+        <div class="benefit-desc">Strategic connection sequences and message campaigns targeting decision-makers in your niche. Warms your profile while generating pipeline.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📣</div>
+        <div class="benefit-title">Meta &amp; Google Ads</div>
+        <div class="benefit-desc">Paid acquisition to amplify your reach beyond organic outbound. Retargeting, lookalike audiences, and conversion-optimized creatives.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📅</div>
+        <div class="benefit-title">Qualified Call Booking</div>
+        <div class="benefit-desc">We qualify every lead before they hit your calendar. You only speak to prospects who match your ICP and are actively looking for a solution.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="sec sec-alt">
+  <div class="wrap-wide">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="sec-title">Real Results From <em>Real Clients</em></div>
+      <p class="sec-sub" style="max-width:480px; margin: 0 auto;">What happens when you stop waiting for referrals and build a system.</p>
+    </div>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-tag">SaaS Company</div>
+        <div class="result-title">200+ Qualified Sales Calls in One Quarter</div>
+        <div class="result-desc">Full cold email + LinkedIn system deployed. Consistent call volume every week with pre-qualified prospects matching their ICP.</div>
+        <div class="result-metrics">
+          <div class="result-metric">
+            <div class="result-mval">200+</div>
+            <div class="result-mlbl">Qualified Calls</div>
+          </div>
+          <div class="result-metric">
+            <div class="result-mval">$408K</div>
+            <div class="result-mlbl">Pipeline Generated</div>
+          </div>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-tag">Creative Agency</div>
+        <div class="result-title">$12K Monthly Retainer Closed in 30 Days</div>
+        <div class="result-desc">No existing pipeline. We delivered 11 qualified meetings in month one — they closed a $12K/mo retainer before the campaign was 30 days old.</div>
+        <div class="result-metrics">
+          <div class="result-metric">
+            <div class="result-mval">11</div>
+            <div class="result-mlbl">Meetings, Month One</div>
+          </div>
+          <div class="result-metric">
+            <div class="result-mval">$12K</div>
+            <div class="result-mlbl">Retainer Closed</div>
+          </div>
+          <div class="result-metric">
+            <div class="result-mval">30</div>
+            <div class="result-mlbl">Days to First Close</div>
+          </div>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-tag">Tax Firm</div>
+        <div class="result-title">155 Appointments, Consistent Month Over Month</div>
+        <div class="result-desc">Needed a predictable flow of qualified prospects. Multi-channel outbound system built from scratch — steady results every month.</div>
+        <div class="result-metrics">
+          <div class="result-metric">
+            <div class="result-mval">155</div>
+            <div class="result-mlbl">Appointments Booked</div>
+          </div>
+          <div class="result-metric">
+            <div class="result-mval">MoM</div>
+            <div class="result-mlbl">Consistent Growth</div>
+          </div>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-tag">B2B Services</div>
+        <div class="result-title">2 Deals Closed, $620K Pipeline in 30 Days</div>
+        <div class="result-desc">Launched cold outreach targeting enterprise buyers. Closed two deals within the first month while building a substantial pipeline for months ahead.</div>
+        <div class="result-metrics">
+          <div class="result-metric">
+            <div class="result-mval">2</div>
+            <div class="result-mlbl">Deals Closed</div>
+          </div>
+          <div class="result-metric">
+            <div class="result-mval">$620K</div>
+            <div class="result-mlbl">Pipeline in 30 Days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="sec">
+  <div class="wrap">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"I was skeptical at first. We'd tried agencies before and got nothing. Within 30 days we had 11 real meetings and closed a $12K retainer. Finally, an agency that delivers."</p>
+      <div class="testi-author">— Founder, Creative Agency</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div style="text-align:center; margin-bottom:40px;">
+      <div class="sec-title">Is This <em>Right For You?</em></div>
+    </div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div class="qualifier-box">
+        <h4>This is NOT for you if…</h4>
+        <ul class="qualifier-list">
+          <li>You're just starting out with no clients yet</li>
+          <li>You're looking for a quick fix or magic bullet</li>
+          <li>You sell to consumers (B2C)</li>
+          <li>You're not ready to handle an influx of calls</li>
+        </ul>
+      </div>
+      <div class="for-box">
+        <h4>This IS for you if…</h4>
+        <ul class="for-list">
+          <li>You're a B2B company or agency owner with an offer that converts</li>
+          <li>You want a predictable, scalable source of qualified pipeline</li>
+          <li>You're tired of relying on referrals and word of mouth</li>
+          <li>You want it fully done for you — not a course or coaching</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-sec" id="apply">
+  <div class="wrap">
+    <h2>Get Pricing &amp; <em>Book Your Free Call</em></h2>
+    <p>Tell us a bit about your business. We'll send over pricing details and book a free 30-minute strategy call.</p>
+    <div class="form-card">
+      <div class="field">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your name" />
+      </div>
+      <div class="field">
+        <label>Work Email</label>
+        <input type="email" placeholder="you@company.com" />
+      </div>
+      <div class="field">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+1 (000) 000-0000" />
+      </div>
+      <div class="field">
+        <label>Company / Business Name</label>
+        <input type="text" placeholder="Your company" />
+      </div>
+      <div class="field">
+        <label>Monthly Revenue</label>
+        <select>
+          <option value="" disabled selected>Select range</option>
+          <option>Under $10K/mo</option>
+          <option>$10K – $30K/mo</option>
+          <option>$30K – $100K/mo</option>
+          <option>$100K+/mo</option>
+        </select>
+      </div>
+      <button class="form-submit" type="submit">Get Pricing &amp; Details →</button>
+      <p class="form-trust">🔒 No spam. No hard sell. Just a straightforward conversation about your goals.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Futurr Digital. All rights reserved. &nbsp;·&nbsp; <a href="/privacy-policy">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms">Terms</a></p>
+</footer>
+
+</body>
+</html>
